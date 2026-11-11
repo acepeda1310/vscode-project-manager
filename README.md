@@ -87,7 +87,9 @@ For easier customization of your project list, you can edit the `projects.json` 
         "rootPath": "c:\\PascalProjects\\pascal-menu-insight",
         "tags": [],
         "enabled": true,
-        "profile": "Delphi"
+        "profile": "Delphi",
+        "icon": "$(rocket)",
+        "color": "#b00"
     },
     {
         "name": "Bookmarks",
@@ -97,7 +99,8 @@ For easier customization of your project list, you can edit the `projects.json` 
             "VS Code"
         ],
         "enabled": true,
-        "profile": "VSCode"
+        "profile": "VSCode",
+        "icon": "🔖"
     },
     {
         "name": "Numbered Bookmarks",
@@ -113,6 +116,10 @@ For easier customization of your project list, you can edit the `projects.json` 
 ```
 
 > You can use `~` or `$home` while defining any path. It will be replaced by your HOME folder.
+
+> The optional `icon` field customizes the icon shown in the Side Bar. It accepts a [codicon](https://microsoft.github.io/vscode-codicons/dist/codicon.html) (`"$(rocket)"` or `"rocket"`), a path to a `.svg` or `.png` file (absolute, `~`/`$home` based, or relative to the `projects.json` folder) or an emoji (`"🚀"`). If it is not defined (or the image file can't be found), the default icon is used.
+
+> The optional `color` field paints the icon when it is a codicon (including the default ones, so you can use `color` without `icon`). It accepts a CSS color name (`"red"`, `"blue"`, `"green"`, ...) or a hex value (`"#bb0000"` or its short form `"#b00"`). It has no effect on emoji or image icons.
 
 > Be sure that the JSON file is well-formed. Otherwise, **Project Manager** will not be able to open it, and an error message like this should appear. In this case, you should use the `Open File` button to fix it.
 

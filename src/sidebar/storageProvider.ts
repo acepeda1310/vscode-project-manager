@@ -18,6 +18,8 @@ interface ProjectInQuickPick {
     label: string;
     description: string;
     profile: string;
+    icon?: string;
+    color?: string;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -114,7 +116,10 @@ export class StorageProvider implements vscode.TreeDataProvider<ProjectNode | Ta
                         iconFavorites, {
                             name: prj.label,
                             path: projectPath,
-                            detail: gitBranch
+                            detail: gitBranch,
+                            customIcon: prj.icon,
+                            customColor: prj.color,
+                            customIconBaseDir: this.projectSource.getDirectory()
                         }, {
                             command: "_projectManagerFork.open",
                             title: "",
@@ -196,7 +201,10 @@ export class StorageProvider implements vscode.TreeDataProvider<ProjectNode | Ta
                         iconFavorites, {
                             name: prj.label,
                             path: projectPath,
-                            detail: gitBranch
+                            detail: gitBranch,
+                            customIcon: prj.icon,
+                            customColor: prj.color,
+                            customIconBaseDir: this.projectSource.getDirectory()
                         },
                         {
                             command: "_projectManagerFork.open",

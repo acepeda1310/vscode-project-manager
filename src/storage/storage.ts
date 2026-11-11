@@ -4,6 +4,7 @@
 *--------------------------------------------------------------------------------------------*/
 
 import fs = require("fs");
+import path = require("path");
 import { PathUtils } from "../utils/path";
 import { isRemotePath } from "../utils/remote";
 import { Uri } from "vscode";
@@ -26,6 +27,11 @@ export class ProjectStorage {
         project.profile = profile;
         this.projects.push(project);
         return;
+    }
+
+    /** Directory containing the projects file, used to resolve relative icon paths */
+    public getDirectory(): string {
+        return path.dirname(this.filename);
     }
 
     public getProjects(): Project[] {
@@ -159,7 +165,13 @@ export class ProjectStorage {
                     paths: project.paths,
                     tags: project.tags,
                     enabled: project.enabled,
-                    profile: project.profile
+                    profile: project.profile,
+                    ...(typeof project.icon === "string" && project.icon.trim() !== ""
+                        ? { icon: project.icon.trim() }
+                        : {}),
+                    ...(typeof project.color === "string" && project.color.trim() !== ""
+                        ? { color: project.color.trim() }
+                        : {})
                 }));
             }
 
@@ -180,7 +192,9 @@ export class ProjectStorage {
             return {
                 label: item.name,
                 description: item.rootPath,
-                profile: item.profile
+                profile: item.profile,
+                ...(item.icon ? { icon: item.icon } : {}),
+                ...(item.color ? { color: item.color } : {})
             };
         });
         return newItems;
@@ -207,7 +221,10 @@ export class ProjectStorage {
         const newItems = this.projects.filter(item => item.enabled && (item.tags.includes(tag) || (tag === '' && item.tags.length === 0))).map(item => {
             return {
                 label: item.name,
-                description: item.rootPath
+                description: item.rootPath,
+                profile: item.profile,
+                ...(item.icon ? { icon: item.icon } : {}),
+                ...(item.color ? { color: item.color } : {})
             };
         });
         return newItems;
@@ -223,7 +240,9 @@ export class ProjectStorage {
             return {
                 label: item.name,
                 description: item.rootPath,
-                profile: item.profile
+                profile: item.profile,
+                ...(item.icon ? { icon: item.icon } : {}),
+                ...(item.color ? { color: item.color } : {})
             };
         });
         return newItems;

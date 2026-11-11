@@ -10,6 +10,8 @@ export interface Project {
     tags: string[];   // the tags associated to the project
     enabled: boolean; // the project should be displayed in the project list
     profile: string;  // the profile to assign to the project
+    icon?: string;    // optional custom icon: codicon ($(name) or name), path to .svg/.png, or emoji
+    color?: string;   // optional icon color (codicons only): CSS color name or hex (#bb0000 / #b00)
 }
 
 export function createProject(name: string, rootPath: string): Project {

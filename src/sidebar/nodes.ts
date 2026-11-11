@@ -5,13 +5,16 @@
 
 import { Command, IconPath, MarkdownString, ThemeColor, ThemeIcon, TreeItem, TreeItemCollapsibleState, Uri } from "vscode";
 import { ThemeIcons } from "vscode-ext-codicons";
-import { currentIconThemeHasFolderIcon, getProjectIcon, getIconDetailsFromProjectPath } from "../utils/icons";
+import { currentIconThemeHasFolderIcon, getProjectIcon, getIconDetailsFromProjectPath, resolveCustomProjectIcon, colorizeIcon } from "../utils/icons";
 import { REMOTE_PREFIX, VIRTUAL_WORKSPACE_PREFIX } from "../utils/remote";
 
 export interface ProjectPreview {
     name: string;
     path: string;
     detail?: string;
+    customIcon?: string;    // value of the `icon` field in projects.json
+    customIconBaseDir?: string; // folder used to resolve relative icon paths
+    customColor?: string;   // value of the `color` field in projects.json
 }
 
 export class ProjectNode extends TreeItem {
@@ -26,7 +29,8 @@ export class ProjectNode extends TreeItem {
         super(label, collapsibleState);
 
         if (icon) {
-            this.iconPath = this.getIconPath(icon, preview.path);
+            this.iconPath = resolveCustomProjectIcon(preview.customIcon, preview.customIconBaseDir ?? "", preview.customColor)
+                ?? colorizeIcon(this.getIconPath(icon, preview.path), preview.customColor);
             this.contextValue = "ProjectNodeKind";
         } else {
             this.contextValue = "ConfigNodeKind";

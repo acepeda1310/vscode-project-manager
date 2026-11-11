@@ -294,4 +294,34 @@ suite("ProjectStorage", () => {
         assert.strictEqual(foundHome!.rootPath, "$home/eh");
     });
 
+    test("load preserves optional icon and color fields across save", () => {
+        const filename = createTempFilename();
+        fs.writeFileSync(filename, JSON.stringify([
+            { name: "WithIcon", rootPath: "/path/icon", paths: [], tags: [], enabled: true, profile: "", icon: "$(rocket)", color: "#b00" },
+            { name: "WithoutIcon", rootPath: "/path/noicon", paths: [], tags: [], enabled: true, profile: "" },
+            { name: "EmptyIcon", rootPath: "/path/empty", paths: [], tags: [], enabled: true, profile: "", icon: "  " }
+        ]));
+
+        try {
+            const storage = new ProjectStorage(filename);
+            assert.strictEqual(storage.load(), "");
+            storage.save();
+
+            const reloaded = new ProjectStorage(filename);
+            assert.strictEqual(reloaded.load(), "");
+            const projects = reloaded.getProjects();
+            assert.strictEqual(projects.find(p => p.name === "WithIcon")?.icon, "$(rocket)");
+            assert.strictEqual(projects.find(p => p.name === "WithIcon")?.color, "#b00");
+            assert.strictEqual("color" in projects.find(p => p.name === "WithoutIcon"), false);
+            assert.strictEqual("icon" in projects.find(p => p.name === "WithoutIcon"), false);
+            assert.strictEqual("icon" in projects.find(p => p.name === "EmptyIcon"), false);
+
+            const mapped = reloaded.map() as Array<{ label: string; icon?: string; color?: string }>;
+            assert.strictEqual(mapped.find(p => p.label === "WithIcon")?.icon, "$(rocket)");
+            assert.strictEqual(mapped.find(p => p.label === "WithIcon")?.color, "#b00");
+        } finally {
+            fs.unlinkSync(filename);
+        }
+    });
+
 });

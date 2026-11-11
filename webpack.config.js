@@ -8,8 +8,31 @@
 
 'use strict';
 
+const fs = require('fs');
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
+
+/**
+ * Copies the codicon SVGs (from @vscode/codicons) to dist/codicons, so codicons
+ * can be rendered with custom colors in the Side Bar (see src/utils/icons.ts)
+ */
+class CopyCodiconsPlugin {
+    apply(compiler) {
+        compiler.hooks.afterEmit.tap('CopyCodiconsPlugin', () => {
+            const source = path.dirname(require.resolve('@vscode/codicons/src/icons/rocket.svg'));
+            const target = path.resolve(__dirname, 'dist', 'codicons');
+            if (fs.existsSync(target)) {
+                return;
+            }
+            fs.mkdirSync(target, { recursive: true });
+            for (const file of fs.readdirSync(source)) {
+                if (file.endsWith('.svg')) {
+                    fs.copyFileSync(path.join(source, file), path.join(target, file));
+                }
+            }
+        });
+    }
+}
 
 /**@type {import('webpack').Configuration}*/
 const config = {
@@ -38,6 +61,7 @@ const config = {
         })],
     },
     
+    plugins: [new CopyCodiconsPlugin()],
     devtool: 'source-map',
     externals: {
         vscode: "commonjs vscode" // the vscode-module is created on-the-fly and must be excluded. Add other modules that cannot be webpack'ed, 📖 -> https://webpack.js.org/configuration/externals/
