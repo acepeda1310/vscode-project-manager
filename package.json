@@ -120,6 +120,16 @@
 				"icon": "$(save)"
 			},
 			{
+				"command": "projectManagerFork.newProject",
+				"title": "%projectManagerFork.commands.newProject.title%",
+				"icon": "$(add)"
+			},
+			{
+				"command": "_projectManagerFork.editProject",
+				"title": "%projectManagerFork.commands.editProject.title%",
+				"icon": "$(edit)"
+			},
+			{
 				"command": "projectManagerFork.listProjects",
 				"title": "%projectManagerFork.commands.listProjects.title%"
 			},
@@ -337,6 +347,10 @@
 		"menus": {
 			"commandPalette": [
 				{
+					"command": "_projectManagerFork.editProject",
+					"when": "false"
+				},
+				{
 					"command": "_projectManagerFork.open",
 					"when": "false"
 				},
@@ -471,6 +485,11 @@
 			],
 			"view/title": [
 				{
+					"command": "projectManagerFork.newProject",
+					"when": "view == projectsExplorerForkFavorites",
+					"group": "navigation@9"
+				},
+				{
 					"command": "projectManagerFork.saveProject",
 					"when": "view == projectsExplorerForkFavorites",
 					"group": "navigation@10"
@@ -593,9 +612,19 @@
 			],
 			"view/item/context": [
 				{
+					"command": "_projectManagerFork.editProject",
+					"when": "view == projectsExplorerForkFavorites && viewItem == ProjectNodeKind",
+					"group": "inline@1"
+				},
+				{
+					"command": "_projectManagerFork.editProject",
+					"when": "view == projectsExplorerForkFavorites && viewItem == ProjectNodeKind",
+					"group": "favorites@0"
+				},
+				{
 					"command": "_projectManagerFork.openInNewWindow",
 					"when": "view =~ /projectsExplorerFork(Favorites|VSCode|Git|SVN|Any|Mercurial)/ && viewItem == ProjectNodeKind",
-					"group": "inline"
+					"group": "inline@2"
 				},
 				{
 					"command": "_projectManagerFork.open",

@@ -8,7 +8,7 @@ import path = require("path");
 import { PathUtils } from "../utils/path";
 import { isRemotePath } from "../utils/remote";
 import { Uri } from "vscode";
-import { createProject, normalizeFolder, Project } from "../core/project";
+import { createProject, normalizeFolder, Project, sanitizeProject } from "../core/project";
 import { NO_TAGS_DEFINED } from "../sidebar/constants";
 
 export class ProjectStorage {
@@ -40,6 +40,41 @@ export class ProjectStorage {
             paths: [ ...project.paths ],
             tags: [ ...project.tags ]
         }));
+    }
+
+    /** Returns a copy of the project with the given name (case insensitive) */
+    public getProject(name: string): Project | undefined {
+        return this.getProjects().find(project => project.name.toLowerCase() === name.toLowerCase());
+    }
+
+    /** Adds a new project (created from the project editor) at the end of the list */
+    public add(project: Project): void {
+        this.projects.push(sanitizeProject(project));
+    }
+
+    /**
+     * Replaces the project named `oldName` (case insensitive), keeping its position in the list.
+     * Returns `false` if the project does not exist.
+     */
+    public update(oldName: string, project: Project): boolean {
+        const index = this.projects.findIndex(element => element.name.toLowerCase() === oldName.toLowerCase());
+        if (index < 0) {
+            return false;
+        }
+        this.projects[ index ] = sanitizeProject(project);
+        return true;
+    }
+
+    /** All the folders (and their parent folders) used by the projects, sorted by name */
+    public getAvailableFolders(): string[] {
+        const folders = new Set<string>();
+        for (const project of this.projects) {
+            const segments = (normalizeFolder(project.folder) ?? "").split("/").filter(segment => segment !== "");
+            for (let index = 1; index <= segments.length; index++) {
+                folders.add(segments.slice(0, index).join("/"));
+            }
+        }
+        return [ ...folders ].sort((a, b) => a.localeCompare(b));
     }
 
     public pop(name: string): Project {

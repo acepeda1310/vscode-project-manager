@@ -11,6 +11,8 @@
     "projectManagerFork.viewsWelcome.favorites.contents.whenNotEmpty": "No projects saved yet.\nIn order to save the current folder/workspace as a project, execute the command:\n[Project Manager: Save Project](command:projectManagerFork.saveProject)\nTo learn more about how to use Project Manager in VS Code [read the docs](http://github.com/alefragnani/vscode-project-manager/#project-manager).",
     "projectManagerFork.viewsWelcome.git.contents": "No projects detected.\nIn order to detect Git projects, you have to configure the `baseFolders` where the Git projects are.\n[Open Settings](command:workbench.action.openSettings?%5B%22projectManagerFork.git.baseFolders%22%5D)\n[I don't need Git projects](command:projectManagerFork.hideGitWelcome)\nIt also supports detection of SVN or Mercurial repositories, VS Code or any other folder.\nTo learn more about how to use Project Manager in VS Code [read the docs](https://github.com/alefragnani/vscode-project-manager/#available-settings).",
     "projectManagerFork.commands.saveProject.title": "Project Manager: Save Project",
+    "projectManagerFork.commands.newProject.title": "Project Manager: New Project",
+    "projectManagerFork.commands.editProject.title": "Edit Project",
     "projectManagerFork.commands.listProjects.title": "Project Manager: List Projects to Open",
     "projectManagerFork.commands.listProjectsNewWindow.title": "Project Manager: List Projects to Open in New Window",
     "projectManagerFork.commands.editProjects.title": "Project Manager: Edit Projects",

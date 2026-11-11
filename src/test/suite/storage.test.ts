@@ -353,4 +353,45 @@ suite("ProjectStorage", () => {
         }
     });
 
+    test("add sanitizes the project and only keeps optional fields with value", () => {
+        const storage = new ProjectStorage(createTempFilename());
+
+        storage.add({
+            name: "  New  ", rootPath: " /path/new ", paths: [ "/other", " ", "" ], tags: [ "a", " a ", "", "b" ],
+            enabled: false, profile: "", icon: " ", color: "#b00", folder: " Work / / Clients "
+        });
+
+        const project = storage.getProject("new");
+        assert.deepStrictEqual(project, {
+            name: "New", rootPath: "/path/new", paths: [ "/other" ], tags: [ "a", "b" ],
+            enabled: false, profile: "", color: "#b00", folder: "Work/Clients"
+        });
+    });
+
+    test("update replaces the project keeping its position, and removes cleared fields", () => {
+        const storage = new ProjectStorage(createTempFilename());
+        storage.add({ name: "A", rootPath: "/a", paths: [], tags: [], enabled: true, profile: "", icon: "rocket", folder: "X" });
+        storage.add({ name: "B", rootPath: "/b", paths: [], tags: [], enabled: true, profile: "" });
+
+        const updated = storage.update("a", { name: "A2", rootPath: "/a2", paths: [], tags: [ "t" ], enabled: true, profile: "", icon: "", folder: "" });
+        assert.strictEqual(updated, true);
+        assert.deepStrictEqual(storage.getProjects().map(project => project.name), [ "A2", "B" ]);
+        const project = storage.getProject("A2");
+        assert.strictEqual(project?.rootPath, "/a2");
+        assert.deepStrictEqual(project?.tags, [ "t" ]);
+        assert.strictEqual("icon" in project!, false);
+        assert.strictEqual("folder" in project!, false);
+
+        assert.strictEqual(storage.update("missing", project!), false);
+    });
+
+    test("getAvailableFolders returns folders and their parents, sorted", () => {
+        const storage = new ProjectStorage(createTempFilename());
+        storage.add({ name: "A", rootPath: "/a", paths: [], tags: [], enabled: true, profile: "", folder: "Work/Clients/Acme" });
+        storage.add({ name: "B", rootPath: "/b", paths: [], tags: [], enabled: false, profile: "", folder: "Personal" });
+        storage.add({ name: "C", rootPath: "/c", paths: [], tags: [], enabled: true, profile: "" });
+
+        assert.deepStrictEqual(storage.getAvailableFolders(), [ "Personal", "Work", "Work/Clients", "Work/Clients/Acme" ]);
+    });
+
 });

@@ -61,6 +61,7 @@ Here are some of the features that **Project Manager** provides:
 ## Available Commands
 
 * `Project Manager: Save Project` Save the current folder/workspace as a new project
+* `Project Manager: New Project` Create a new project using a form
 * `Project Manager: Edit Project` Edit your projects manually (`projects.json`)
 * `Project Manager: List Projects to Open` List all saved/detected projects and pick one
 * `Project Manager: List Projects to Open in New Window` List all saved/detected projects and pick one to be opened in New Window
@@ -76,6 +77,18 @@ You can save the current folder/workspace as a **Project** at any time. You just
 
 > It suggests a name to you _automatically_ :)
  
+### New Project / Edit Project (form)
+
+You can also create projects with a form, without touching `projects.json`. Execute `Project Manager: New Project` (or use the `+` button in the **Favorites** view title) and fill in:
+
+* **Name** and **Root Path** (a folder or a `.code-workspace` file; required)
+* **Additional Paths**, **Tags**, **Enabled** and **Profile**
+* **Icon** (optional): default icon, a [codicon](https://microsoft.github.io/vscode-codicons/dist/codicon.html) picked from a searchable list, an image (`.svg`/`.png`) or an emoji
+* **Color** (optional): picked with a color picker, or typed as a CSS color name or hex value
+* **Folder** (optional): none, one of the existing folders, or a new one (use `/` for subfolders)
+
+To edit an existing project with the same form, use the pencil button next to **Open in New Window** in the **Favorites** view (also available in its context menu). Editing `projects.json` by hand is still supported.
+
 ### Edit Projects
 
 For easier customization of your project list, you can edit the `projects.json` file, directly inside **Code**. Just execute `Project Manager: Edit Projects` and the `projects.json` file is opened. Simple as this:

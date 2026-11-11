@@ -27,6 +27,28 @@ export function normalizeFolder(folder: unknown): string | undefined {
     return segments.length > 0 ? segments.join("/") : undefined;
 }
 
+/**
+ * Returns a clean copy of a project: trims texts, drops empty paths/tags (and duplicated tags),
+ * and only keeps the optional fields (icon, color, folder) when they have a value.
+ */
+export function sanitizeProject(project: Project): Project {
+    const trimmed = (value: unknown): string => typeof value === "string" ? value.trim() : "";
+    const icon = trimmed(project.icon);
+    const color = trimmed(project.color);
+    const folder = normalizeFolder(project.folder);
+    return {
+        name: trimmed(project.name),
+        rootPath: trimmed(project.rootPath),
+        paths: (project.paths ?? []).map(trimmed).filter(item => item !== ""),
+        tags: [ ...new Set((project.tags ?? []).map(trimmed).filter(item => item !== "")) ],
+        enabled: project.enabled !== false,
+        profile: trimmed(project.profile),
+        ...(icon ? { icon } : {}),
+        ...(color ? { color } : {}),
+        ...(folder ? { folder } : {})
+    };
+}
+
 export function createProject(name: string, rootPath: string): Project {
 
     const newProject: Project = {

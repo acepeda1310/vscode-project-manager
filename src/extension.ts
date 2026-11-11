@@ -36,6 +36,7 @@ import { registerSideBarDecorations } from "./sidebar/decoration";
 import { ProjectNode } from "./sidebar/nodes";
 import { Project } from "./core/project";
 import { ProjectManagerApiImpl } from "./api/apiImpl";
+import { openProjectEditor } from "./projectEditor/projectEditor";
 
 let locators: Locators;
 
@@ -125,6 +126,8 @@ export async function activate(context: vscode.ExtensionContext) {
     vscode.commands.registerCommand("_projectManagerFork.editTags", (node) => editTags(node));
     vscode.commands.registerCommand("projectManagerFork.addToFavorites", (node) => saveProject(node));
     vscode.commands.registerCommand("_projectManagerFork.toggleProjectEnabled", (node) => toggleProjectEnabled(node));
+    vscode.commands.registerCommand("projectManagerFork.newProject", () => openEditor());
+    vscode.commands.registerCommand("_projectManagerFork.editProject", (node: ProjectNode) => openEditor(node?.command?.arguments[ 1 ]));
 
     const viewAsList = Container.context.globalState.get<boolean>("viewAsList", true);
     vscode.commands.executeCommand("setContext", "projectManagerFork.viewAsList", viewAsList);
@@ -576,6 +579,18 @@ export async function activate(context: vscode.ExtensionContext) {
             projectStorage.save();
             vscode.window.showInformationMessage(l10n.t("Project updated!"));
         }
+    }
+
+    function openEditor(projectName?: string) {
+        const originalPath = projectName ? projectStorage.getProject(projectName)?.rootPath : undefined;
+        openProjectEditor(context, projectStorage, (project, oldName) => {
+            if (oldName && oldName !== project.name) {
+                Container.stack.rename(oldName, project.name);
+                context.globalState.update("recent", Container.stack.toString());
+                updateStatusBar(oldName, originalPath ?? project.rootPath, project.name);
+            }
+            providerManager.refreshStorageTreeView();
+        }, projectName);
     }
 
     function toggleProjectEnabled(node: ProjectNode, askForUndo = true) {
