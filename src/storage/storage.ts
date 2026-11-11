@@ -8,7 +8,7 @@ import path = require("path");
 import { PathUtils } from "../utils/path";
 import { isRemotePath } from "../utils/remote";
 import { Uri } from "vscode";
-import { createProject, Project } from "../core/project";
+import { createProject, normalizeFolder, Project } from "../core/project";
 import { NO_TAGS_DEFINED } from "../sidebar/constants";
 
 export class ProjectStorage {
@@ -171,7 +171,8 @@ export class ProjectStorage {
                         : {}),
                     ...(typeof project.color === "string" && project.color.trim() !== ""
                         ? { color: project.color.trim() }
-                        : {})
+                        : {}),
+                    ...(normalizeFolder(project.folder) ? { folder: normalizeFolder(project.folder) } : {})
                 }));
             }
 
@@ -194,7 +195,8 @@ export class ProjectStorage {
                 description: item.rootPath,
                 profile: item.profile,
                 ...(item.icon ? { icon: item.icon } : {}),
-                ...(item.color ? { color: item.color } : {})
+                ...(item.color ? { color: item.color } : {}),
+                ...(item.folder ? { folder: item.folder } : {})
             };
         });
         return newItems;
@@ -224,7 +226,8 @@ export class ProjectStorage {
                 description: item.rootPath,
                 profile: item.profile,
                 ...(item.icon ? { icon: item.icon } : {}),
-                ...(item.color ? { color: item.color } : {})
+                ...(item.color ? { color: item.color } : {}),
+                ...(item.folder ? { folder: item.folder } : {})
             };
         });
         return newItems;
@@ -242,7 +245,8 @@ export class ProjectStorage {
                 description: item.rootPath,
                 profile: item.profile,
                 ...(item.icon ? { icon: item.icon } : {}),
-                ...(item.color ? { color: item.color } : {})
+                ...(item.color ? { color: item.color } : {}),
+                ...(item.folder ? { folder: item.folder } : {})
             };
         });
         return newItems;

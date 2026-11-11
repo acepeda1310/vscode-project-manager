@@ -5,7 +5,7 @@
 
 import { Command, IconPath, MarkdownString, ThemeColor, ThemeIcon, TreeItem, TreeItemCollapsibleState, Uri } from "vscode";
 import { ThemeIcons } from "vscode-ext-codicons";
-import { currentIconThemeHasFolderIcon, getProjectIcon, getIconDetailsFromProjectPath, resolveCustomProjectIcon, colorizeIcon } from "../utils/icons";
+import { currentIconThemeHasFolderIcon, getFolderIcon, getProjectIcon, getIconDetailsFromProjectPath, resolveCustomProjectIcon, colorizeIcon } from "../utils/icons";
 import { REMOTE_PREFIX, VIRTUAL_WORKSPACE_PREFIX } from "../utils/remote";
 
 export interface ProjectPreview {
@@ -121,5 +121,31 @@ export class NoTagNode extends TagNode {
     ) {
         super("", collapsibleState);
         this.description = label;
+    }
+}
+
+
+/**
+ * A (virtual) folder, defined by the `folder` field of the projects, used to group projects in the Side Bar.
+ * It holds the projects (and, indirectly, the subfolders) it contains.
+ */
+export class FolderNode extends TreeItem {
+
+    constructor(
+        public readonly label: string,
+        public readonly folderPath: string,     // full path of the folder (e.g. "Work/Clients")
+        public readonly stateKey: string,       // key used to persist its expansion state
+        public readonly projects: unknown[],    // projects inside this folder (or any of its subfolders)
+        expanded: boolean
+    ) {
+        super(label, expanded ? TreeItemCollapsibleState.Expanded : TreeItemCollapsibleState.Collapsed);
+        this.contextValue = "FolderNodeKind";
+        this.tooltip = folderPath;
+        this.setExpanded(expanded);
+    }
+
+    public setExpanded(expanded: boolean): void {
+        this.collapsibleState = expanded ? TreeItemCollapsibleState.Expanded : TreeItemCollapsibleState.Collapsed;
+        this.iconPath = getFolderIcon(expanded);
     }
 }

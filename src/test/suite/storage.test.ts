@@ -324,4 +324,33 @@ suite("ProjectStorage", () => {
         }
     });
 
+    test("load normalizes the optional folder field", () => {
+        const filename = createTempFilename();
+        fs.writeFileSync(filename, JSON.stringify([
+            { name: "Nested", rootPath: "/path/nested", paths: [], tags: [], enabled: true, profile: "", folder: " Work / Clients/ " },
+            { name: "Root", rootPath: "/path/root", paths: [], tags: [], enabled: true, profile: "" },
+            { name: "EmptyFolder", rootPath: "/path/empty", paths: [], tags: [], enabled: true, profile: "", folder: " / " },
+            { name: "NotString", rootPath: "/path/number", paths: [], tags: [], enabled: true, profile: "", folder: 3 }
+        ]));
+
+        try {
+            const storage = new ProjectStorage(filename);
+            assert.strictEqual(storage.load(), "");
+            storage.save();
+
+            const reloaded = new ProjectStorage(filename);
+            assert.strictEqual(reloaded.load(), "");
+            const projects = reloaded.getProjects();
+            assert.strictEqual(projects.find(p => p.name === "Nested")?.folder, "Work/Clients");
+            assert.strictEqual("folder" in projects.find(p => p.name === "Root"), false);
+            assert.strictEqual("folder" in projects.find(p => p.name === "EmptyFolder"), false);
+            assert.strictEqual("folder" in projects.find(p => p.name === "NotString"), false);
+
+            const mapped = reloaded.map() as Array<{ label: string; folder?: string }>;
+            assert.strictEqual(mapped.find(p => p.label === "Nested")?.folder, "Work/Clients");
+        } finally {
+            fs.unlinkSync(filename);
+        }
+    });
+
 });

@@ -6,9 +6,9 @@
 import * as vscode from "vscode";
 import { Locators } from "../autodetect/locators";
 import { ProjectStorage } from "../storage/storage";
-import { ProjectNode, TagNode } from "./nodes";
+import { FolderNode, ProjectNode, TagNode } from "./nodes";
 import { AutodetectProvider } from "./autodetectProvider";
-import { StorageProvider } from "./storageProvider";
+import { StorageNode, StorageProvider } from "./storageProvider";
 import { Container } from "../core/container";
 import { l10n } from "vscode";
 
@@ -21,7 +21,7 @@ export class Providers {
     public svnProvider: AutodetectProvider;
     public anyProvider: AutodetectProvider;
 
-    private storageTreeView: vscode.TreeView<ProjectNode | TagNode>;
+    private storageTreeView: vscode.TreeView<StorageNode>;
     private vscodeTreeView: vscode.TreeView<ProjectNode>;
     private gitTreeView: vscode.TreeView<ProjectNode>;
     private mercurialTreeView: vscode.TreeView<ProjectNode>;
@@ -89,8 +89,15 @@ export class Providers {
         );
     }
 
-    private async handleStorageTreeViewExpansionChange(event: vscode.TreeViewExpansionEvent<ProjectNode | TagNode>, state: "expanded" | "collapsed") {
+    private async handleStorageTreeViewExpansionChange(event: vscode.TreeViewExpansionEvent<StorageNode>, state: "expanded" | "collapsed") {
         const element = event.element;
+        if (element instanceof FolderNode) {
+            await StorageProvider.setFolderExpanded(element.stateKey, state === "expanded");
+            // swap the closed/opened folder icon
+            element.setExpanded(state === "expanded");
+            this.storageProvider.refresh(element);
+            return;
+        }
         if (element instanceof TagNode) {
             const behavior = vscode.workspace.getConfiguration("projectManagerFork").get<string>("tags.collapseItems", "startExpanded");
             const shouldPersistExpansion = behavior === "startExpanded" || behavior === "startCollapsed";

@@ -194,6 +194,14 @@ function getColoredCodicon(name: string, color: string): ThemeIcon | Uri {
     return uri ?? new ThemeIcon(name);
 }
 
+/** Yellow color used for folder icons in the Side Bar */
+export const FOLDER_ICON_COLOR = "#e8b83a";
+
+/** Yellow folder icon (open or closed) used to group projects by their `folder` field */
+export function getFolderIcon(expanded: boolean): ThemeIcon | Uri {
+    return getColoredCodicon(expanded ? "folder-opened" : "folder", FOLDER_ICON_COLOR);
+}
+
 function getCodicon(name: string, color: string | undefined): ThemeIcon | Uri {
     return color ? getColoredCodicon(name, color) : new ThemeIcon(name);
 }

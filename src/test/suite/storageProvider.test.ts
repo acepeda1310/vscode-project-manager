@@ -5,7 +5,7 @@
 
 import * as assert from "assert";
 import * as vscode from "vscode";
-import { StorageProvider } from "../../sidebar/storageProvider";
+import { groupProjectsByFolder, StorageProvider } from "../../sidebar/storageProvider";
 import { Container } from '../../../src/core/container';
 import { createMockContext } from "./mocks/MockMemento";
 
@@ -242,5 +242,38 @@ suite("StorageProvider Tag Expansion Tests", () => {
             state = StorageProvider.getTagCollapsibleState("tag1", "startCollapsed");
             assert.strictEqual(state, vscode.TreeItemCollapsibleState.Collapsed);
         });
+    });
+});
+
+suite("groupProjectsByFolder", () => {
+
+    const projects = [
+        { label: "root" },
+        { label: "a1", folder: "Work" },
+        { label: "a2", folder: "Work/Clients" },
+        { label: "a3", folder: "Work/Clients/Acme" },
+        { label: "b1", folder: "personal" }
+    ];
+
+    test("root level contains top folders (sorted) and projects without folder", () => {
+        const level = groupProjectsByFolder(projects, "");
+        assert.deepStrictEqual(level.folders.map(f => [ f.name, f.path, f.projects.length ]), [
+            [ "personal", "personal", 1 ],
+            [ "Work", "Work", 3 ]
+        ]);
+        assert.deepStrictEqual(level.projects.map(p => p.label), [ "root" ]);
+    });
+
+    test("nested level contains subfolders and its own projects", () => {
+        const work = groupProjectsByFolder(projects, "").folders.find(f => f.name === "Work")!;
+        const level = groupProjectsByFolder(work.projects, work.path);
+        assert.deepStrictEqual(level.folders.map(f => [ f.name, f.path, f.projects.length ]), [
+            [ "Clients", "Work/Clients", 2 ]
+        ]);
+        assert.deepStrictEqual(level.projects.map(p => p.label), [ "a1" ]);
+
+        const clients = groupProjectsByFolder(level.folders[ 0 ].projects, "Work/Clients");
+        assert.deepStrictEqual(clients.folders.map(f => f.path), [ "Work/Clients/Acme" ]);
+        assert.deepStrictEqual(clients.projects.map(p => p.label), [ "a2" ]);
     });
 });
