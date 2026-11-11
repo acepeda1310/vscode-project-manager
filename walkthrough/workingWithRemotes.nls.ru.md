@@ -18,7 +18,7 @@ _Всё просто работает_
 
 ```json
     "remote.extensionKind": {
-        "alefragnani.project-manager": [
+        "adriancepeda.project-manager-fork": [
             "workspace"
         ]
     },

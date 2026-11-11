@@ -33,7 +33,7 @@ export class ProjectNode extends TreeItem {
         }
 
         this.resourceUri = Uri.from({
-            scheme: 'projectManager-view',
+            scheme: 'projectManagerFork-view',
             path: preview.path
         });
 

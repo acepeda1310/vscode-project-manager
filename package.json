@@ -1,9 +1,9 @@
 {
-	"name": "project-manager",
+	"name": "project-manager-fork",
 	"displayName": "Project Manager",
 	"description": "Easily switch between projects",
 	"version": "13.1.1",
-	"publisher": "alefragnani",
+	"publisher": "adriancepeda",
 	"engines": {
 		"vscode": "^1.78.0"
 	},
@@ -53,670 +53,670 @@
 		"viewsContainers": {
 			"activitybar": [
 				{
-					"id": "project-manager",
-					"title": "%projectManager.activitybar.title%",
+					"id": "project-manager-fork",
+					"title": "%projectManagerFork.activitybar.title%",
 					"icon": "docs/images/project-manager-side-bar.svg"
 				}
 			]
 		},
 		"views": {
-			"project-manager": [
+			"project-manager-fork": [
 				{
-					"id": "projectsExplorerFavorites",
-					"name": "%projectManager.views.favorites.name%"
+					"id": "projectsExplorerForkFavorites",
+					"name": "%projectManagerFork.views.favorites.name%"
 				},
 				{
-					"id": "projectsExplorerGit",
-					"name": "%projectManager.views.git.name%",
-					"when": "projectManager.canShowTreeViewGit"
+					"id": "projectsExplorerForkGit",
+					"name": "%projectManagerFork.views.git.name%",
+					"when": "projectManagerFork.canShowTreeViewGit"
 				},
 				{
-					"id": "projectsExplorerSVN",
-					"name": "%projectManager.views.svn.name%",
-					"when": "projectManager.canShowTreeViewSVN"
+					"id": "projectsExplorerForkSVN",
+					"name": "%projectManagerFork.views.svn.name%",
+					"when": "projectManagerFork.canShowTreeViewSVN"
 				},
 				{
-					"id": "projectsExplorerAny",
-					"name": "%projectManager.views.any.name%",
-					"when": "projectManager.canShowTreeViewAny"
+					"id": "projectsExplorerForkAny",
+					"name": "%projectManagerFork.views.any.name%",
+					"when": "projectManagerFork.canShowTreeViewAny"
 				},
 				{
-					"id": "projectsExplorerMercurial",
-					"name": "%projectManager.views.mercurial.name%",
-					"when": "projectManager.canShowTreeViewMercurial"
+					"id": "projectsExplorerForkMercurial",
+					"name": "%projectManagerFork.views.mercurial.name%",
+					"when": "projectManagerFork.canShowTreeViewMercurial"
 				},
 				{
-					"id": "projectsExplorerVSCode",
-					"name": "%projectManager.views.vscode.name%",
-					"when": "projectManager.canShowTreeViewVSCode"
+					"id": "projectsExplorerForkVSCode",
+					"name": "%projectManagerFork.views.vscode.name%",
+					"when": "projectManagerFork.canShowTreeViewVSCode"
 				},
 				{
-					"id": "projectManagerHelpAndFeedback",
-					"name": "%projectManager.views.helpAndFeedback.name%",
+					"id": "projectManagerForkHelpAndFeedback",
+					"name": "%projectManagerFork.views.helpAndFeedback.name%",
 					"visibility": "collapsed"
 				}
 			]
 		},
 		"viewsWelcome": [
 			{
-				"view": "projectsExplorerFavorites",
-				"contents": "%projectManager.viewsWelcome.favorites.contents.whenEmpty%",
+				"view": "projectsExplorerForkFavorites",
+				"contents": "%projectManagerFork.viewsWelcome.favorites.contents.whenEmpty%",
 				"when": "workbenchState == empty"
 			},
 			{
-				"view": "projectsExplorerFavorites",
-				"contents": "%projectManager.viewsWelcome.favorites.contents.whenNotEmpty%",
+				"view": "projectsExplorerForkFavorites",
+				"contents": "%projectManagerFork.viewsWelcome.favorites.contents.whenNotEmpty%",
 				"when": "workbenchState != empty"
 			},
 			{
-				"view": "projectsExplorerGit",
-				"contents": "%projectManager.viewsWelcome.git.contents%"
+				"view": "projectsExplorerForkGit",
+				"contents": "%projectManagerFork.viewsWelcome.git.contents%"
 			}
 		],
 		"commands": [
 			{
-				"command": "projectManager.saveProject",
-				"title": "%projectManager.commands.saveProject.title%",
+				"command": "projectManagerFork.saveProject",
+				"title": "%projectManagerFork.commands.saveProject.title%",
 				"icon": "$(save)"
 			},
 			{
-				"command": "projectManager.listProjects",
-				"title": "%projectManager.commands.listProjects.title%"
+				"command": "projectManagerFork.listProjects",
+				"title": "%projectManagerFork.commands.listProjects.title%"
 			},
 			{
-				"command": "projectManager.listProjectsNewWindow",
-				"title": "%projectManager.commands.listProjectsNewWindow.title%"
+				"command": "projectManagerFork.listProjectsNewWindow",
+				"title": "%projectManagerFork.commands.listProjectsNewWindow.title%"
 			},
 			{
-				"command": "projectManager.editProjects",
-				"title": "%projectManager.commands.editProjects.title%",
+				"command": "projectManagerFork.editProjects",
+				"title": "%projectManagerFork.commands.editProjects.title%",
 				"icon": "$(edit)"
 			},
 			{
-				"command": "_projectManager.viewAsTags#sideBarFavorites",
-				"title": "%projectManager.commands.viewAsTags#sideBarFavorites.title%",
+				"command": "_projectManagerFork.viewAsTags#sideBarFavorites",
+				"title": "%projectManagerFork.commands.viewAsTags#sideBarFavorites.title%",
 				"icon": "$(list-tree)",
-				"enablement": "projectManager.viewAsList"
+				"enablement": "projectManagerFork.viewAsList"
 			},
 			{
-				"command": "_projectManager.viewAsList#sideBarFavorites",
-				"title": "%projectManager.commands.viewAsList#sideBarFavorites.title%",
+				"command": "_projectManagerFork.viewAsList#sideBarFavorites",
+				"title": "%projectManagerFork.commands.viewAsList#sideBarFavorites.title%",
 				"icon": "$(list-flat)",
-				"enablement": "!projectManager.viewAsList"
+				"enablement": "!projectManagerFork.viewAsList"
 			},
 			{
-				"command": "_projectManager.sortBySaved#sideBarFavorites",
-				"title": "%projectManager.commands.sortBySaved#sideBarFavorites.title%",
-				"enablement": "projectManager.sortBy != Saved"
+				"command": "_projectManagerFork.sortBySaved#sideBarFavorites",
+				"title": "%projectManagerFork.commands.sortBySaved#sideBarFavorites.title%",
+				"enablement": "projectManagerFork.sortBy != Saved"
 			},
 			{
-				"command": "_projectManager.sortByName#sideBarFavorites",
-				"title": "%projectManager.commands.sortByName#sideBarFavorites.title%",
-				"enablement": "projectManager.sortBy != Name"
+				"command": "_projectManagerFork.sortByName#sideBarFavorites",
+				"title": "%projectManagerFork.commands.sortByName#sideBarFavorites.title%",
+				"enablement": "projectManagerFork.sortBy != Name"
 			},
 			{
-				"command": "_projectManager.sortByPath#sideBarFavorites",
-				"title": "%projectManager.commands.sortByPath#sideBarFavorites.title%",
-				"enablement": "projectManager.sortBy != Path"
+				"command": "_projectManagerFork.sortByPath#sideBarFavorites",
+				"title": "%projectManagerFork.commands.sortByPath#sideBarFavorites.title%",
+				"enablement": "projectManagerFork.sortBy != Path"
 			},
 			{
-				"command": "_projectManager.sortByRecent#sideBarFavorites",
-				"title": "%projectManager.commands.sortByRecent#sideBarFavorites.title%",
-				"enablement": "projectManager.sortBy != Recent"
+				"command": "_projectManagerFork.sortByRecent#sideBarFavorites",
+				"title": "%projectManagerFork.commands.sortByRecent#sideBarFavorites.title%",
+				"enablement": "projectManagerFork.sortBy != Recent"
 			},
 			{
-				"command": "projectManager.filterProjectsByTag",
-				"title": "%projectManager.commands.filterProjectsByTag.title%"
+				"command": "projectManagerFork.filterProjectsByTag",
+				"title": "%projectManagerFork.commands.filterProjectsByTag.title%"
 			},
 			{
-				"command": "projectManager.filterProjectsByTag#sideBar",
-				"title": "%projectManager.commands.filterProjectsByTag#sideBar.title%",
+				"command": "projectManagerFork.filterProjectsByTag#sideBar",
+				"title": "%projectManagerFork.commands.filterProjectsByTag#sideBar.title%",
 				"icon": "$(tag)"
 			},
 			{
-				"command": "projectManager.listFavoriteProjects#sideBarFavorites",
-				"title": "%projectManager.commands.listFavoriteProjects#sideBarFavorites.title%",
+				"command": "projectManagerFork.listFavoriteProjects#sideBarFavorites",
+				"title": "%projectManagerFork.commands.listFavoriteProjects#sideBarFavorites.title%",
 				"icon": "$(search)"
 			},
 			{
-				"command": "projectManager.refreshProjects",
-				"title": "%projectManager.commands.refreshProjects.title%"
+				"command": "projectManagerFork.refreshProjects",
+				"title": "%projectManagerFork.commands.refreshProjects.title%"
 			},
 			{
-				"command": "projectManager.refreshVSCodeProjects",
-				"title": "%projectManager.commands.refreshVSCodeProjects.title%",
+				"command": "projectManagerFork.refreshVSCodeProjects",
+				"title": "%projectManagerFork.commands.refreshVSCodeProjects.title%",
 				"icon": "$(refresh)"
 			},
 			{
-				"command": "projectManager.listVSCodeProjects#sideBarVSCode",
-				"title": "%projectManager.commands.listVSCodeProjects#sideBarVSCode.title%",
+				"command": "projectManagerFork.listVSCodeProjects#sideBarVSCode",
+				"title": "%projectManagerFork.commands.listVSCodeProjects#sideBarVSCode.title%",
 				"icon": "$(search)"
 			},
 			{
-				"command": "projectManager.refreshGitProjects",
-				"title": "%projectManager.commands.refreshGitProjects.title%",
+				"command": "projectManagerFork.refreshGitProjects",
+				"title": "%projectManagerFork.commands.refreshGitProjects.title%",
 				"icon": "$(refresh)"
 			},
 			{
-				"command": "projectManager.listGitProjects#sideBarGit",
-				"title": "%projectManager.commands.listGitProjects#sideBarGit.title%",
+				"command": "projectManagerFork.listGitProjects#sideBarGit",
+				"title": "%projectManagerFork.commands.listGitProjects#sideBarGit.title%",
 				"icon": "$(search)"
 			},
 			{
-				"command": "projectManager.refreshSVNProjects",
-				"title": "%projectManager.commands.refreshSVNProjects.title%",
+				"command": "projectManagerFork.refreshSVNProjects",
+				"title": "%projectManagerFork.commands.refreshSVNProjects.title%",
 				"icon": "$(refresh)"
 			},
 			{
-				"command": "projectManager.listSVNProjects#sideBarSVN",
-				"title": "%projectManager.commands.listSVNProjects#sideBarSVN.title%",
+				"command": "projectManagerFork.listSVNProjects#sideBarSVN",
+				"title": "%projectManagerFork.commands.listSVNProjects#sideBarSVN.title%",
 				"icon": "$(search)"
 			},
 			{
-				"command": "projectManager.refreshAnyProjects",
-				"title": "%projectManager.commands.refreshAnyProjects.title%",
+				"command": "projectManagerFork.refreshAnyProjects",
+				"title": "%projectManagerFork.commands.refreshAnyProjects.title%",
 				"icon": "$(refresh)"
 			},
 			{
-				"command": "projectManager.listAnyProjects#sideBarAny",
-				"title": "%projectManager.commands.listAnyProjects#sideBarAny.title%",
+				"command": "projectManagerFork.listAnyProjects#sideBarAny",
+				"title": "%projectManagerFork.commands.listAnyProjects#sideBarAny.title%",
 				"icon": "$(search)"
 			},
 			{
-				"command": "projectManager.refreshMercurialProjects",
-				"title": "%projectManager.commands.refreshMercurialProjects.title%",
+				"command": "projectManagerFork.refreshMercurialProjects",
+				"title": "%projectManagerFork.commands.refreshMercurialProjects.title%",
 				"icon": "$(refresh)"
 			},
 			{
-				"command": "projectManager.listMercurialProjects#sideBarMercurial",
-				"title": "%projectManager.commands.listMercurialProjects#sideBarMercurial.title%",
+				"command": "projectManagerFork.listMercurialProjects#sideBarMercurial",
+				"title": "%projectManagerFork.commands.listMercurialProjects#sideBarMercurial.title%",
 				"icon": "$(search)"
 			},
 			{
-				"command": "projectManager.openSettings#sideBarFavorites",
-				"title": "%projectManager.commands.openSettings#sideBarFavorites.title%"
+				"command": "projectManagerFork.openSettings#sideBarFavorites",
+				"title": "%projectManagerFork.commands.openSettings#sideBarFavorites.title%"
 			},
 			{
-				"command": "projectManager.openSettings#sideBarVSCode",
-				"title": "%projectManager.commands.openSettings#sideBarVSCode.title%"
+				"command": "projectManagerFork.openSettings#sideBarVSCode",
+				"title": "%projectManagerFork.commands.openSettings#sideBarVSCode.title%"
 			},
 			{
-				"command": "projectManager.openSettings#sideBarGit",
-				"title": "%projectManager.commands.openSettings#sideBarGit.title%"
+				"command": "projectManagerFork.openSettings#sideBarGit",
+				"title": "%projectManagerFork.commands.openSettings#sideBarGit.title%"
 			},
 			{
-				"command": "projectManager.openSettings#sideBarSVN",
-				"title": "%projectManager.commands.openSettings#sideBarSVN.title%"
+				"command": "projectManagerFork.openSettings#sideBarSVN",
+				"title": "%projectManagerFork.commands.openSettings#sideBarSVN.title%"
 			},
 			{
-				"command": "projectManager.openSettings#sideBarAny",
-				"title": "%projectManager.commands.openSettings#sideBarAny.title%"
+				"command": "projectManagerFork.openSettings#sideBarAny",
+				"title": "%projectManagerFork.commands.openSettings#sideBarAny.title%"
 			},
 			{
-				"command": "projectManager.openSettings#sideBarMercurial",
-				"title": "%projectManager.commands.openSettings#sideBarMercurial.title%"
+				"command": "projectManagerFork.openSettings#sideBarMercurial",
+				"title": "%projectManagerFork.commands.openSettings#sideBarMercurial.title%"
 			},
 			{
-				"command": "_projectManager.open",
-				"title": "%projectManager.commands.open.title%"
+				"command": "_projectManagerFork.open",
+				"title": "%projectManagerFork.commands.open.title%"
 			},
 			{
-				"command": "_projectManager.openInNewWindow",
-				"title": "%projectManager.commands.openInNewWindow.title%",
+				"command": "_projectManagerFork.openInNewWindow",
+				"title": "%projectManagerFork.commands.openInNewWindow.title%",
 				"icon": "$(link-external)"
 			},
 			{
-				"command": "projectManager.addToWorkspace#sideBar",
-				"title": "%projectManager.commands.addToWorkspace#sideBar.title%"
+				"command": "projectManagerFork.addToWorkspace#sideBar",
+				"title": "%projectManagerFork.commands.addToWorkspace#sideBar.title%"
 			},
 			{
-				"command": "_projectManager.revealInFinder#sideBar",
-				"title": "%projectManager.commands.revealInFinder#sideBar.title%"
+				"command": "_projectManagerFork.revealInFinder#sideBar",
+				"title": "%projectManagerFork.commands.revealInFinder#sideBar.title%"
 			},
 			{
-				"command": "_projectManager.revealInExplorer#sideBar",
-				"title": "%projectManager.commands.revealInExplorer#sideBar.title%"
+				"command": "_projectManagerFork.revealInExplorer#sideBar",
+				"title": "%projectManagerFork.commands.revealInExplorer#sideBar.title%"
 			},
 			{
-				"command": "_projectManager.revealInFileManager#sideBar",
-				"title": "%projectManager.commands.revealInFileManager#sideBar.title%"
+				"command": "_projectManagerFork.revealInFileManager#sideBar",
+				"title": "%projectManagerFork.commands.revealInFileManager#sideBar.title%"
 			},
 			{
-				"command": "projectManager.addToWorkspace",
-				"title": "%projectManager.commands.addToWorkspace.title%"
+				"command": "projectManagerFork.addToWorkspace",
+				"title": "%projectManagerFork.commands.addToWorkspace.title%"
 			},
 			{
-				"command": "_projectManager.deleteProject",
-				"title": "%projectManager.commands.deleteProject.title%"
+				"command": "_projectManagerFork.deleteProject",
+				"title": "%projectManagerFork.commands.deleteProject.title%"
 			},
 			{
-				"command": "_projectManager.renameProject",
-				"title": "%projectManager.commands.renameProject.title%"
+				"command": "_projectManagerFork.renameProject",
+				"title": "%projectManagerFork.commands.renameProject.title%"
 			},
 			{
-				"command": "_projectManager.editTags",
-				"title": "%projectManager.commands.editTags.title%"
+				"command": "_projectManagerFork.editTags",
+				"title": "%projectManagerFork.commands.editTags.title%"
 			},
 			{
-				"command": "projectManager.whatsNew",
-				"title": "%projectManager.commands.whatsNew.title%"
+				"command": "projectManagerFork.whatsNew",
+				"title": "%projectManagerFork.commands.whatsNew.title%"
 			},
 			{
-				"command": "_projectManager.whatsNewContextMenu",
-				"title": "%projectManager.commands.whatsNewContextMenu.title%"
+				"command": "_projectManagerFork.whatsNewContextMenu",
+				"title": "%projectManagerFork.commands.whatsNewContextMenu.title%"
 			},
 			{
-				"command": "projectManager.addToFavorites",
-				"title": "%projectManager.commands.addToFavorites.title%"
+				"command": "projectManagerFork.addToFavorites",
+				"title": "%projectManagerFork.commands.addToFavorites.title%"
 			},
 			{
-				"command": "_projectManager.toggleProjectEnabled",
-				"title": "%projectManager.commands.toggleProjectEnabled.title%"
+				"command": "_projectManagerFork.toggleProjectEnabled",
+				"title": "%projectManagerFork.commands.toggleProjectEnabled.title%"
 			},
 			{
-				"command": "projectManager.hideGitWelcome",
-				"title": "%projectManager.commands.hideGitWelcome.title%"
+				"command": "projectManagerFork.hideGitWelcome",
+				"title": "%projectManagerFork.commands.hideGitWelcome.title%"
 			},
 			{
-				"command": "projectManager.showGitWelcome",
-				"title": "%projectManager.commands.showGitWelcome.title%"
+				"command": "projectManagerFork.showGitWelcome",
+				"title": "%projectManagerFork.commands.showGitWelcome.title%"
 			},
 			{
-				"command": "_projectManager.openFolderWelcome",
-				"title": "%projectManager.commands.openFolderWelcome.title%"
+				"command": "_projectManagerFork.openFolderWelcome",
+				"title": "%projectManagerFork.commands.openFolderWelcome.title%"
 			},
 			{
-				"command": "projectManager.supportProjectManager",
-				"title": "%projectManager.commands.supportProjectManager.title%"
+				"command": "projectManagerFork.supportProjectManager",
+				"title": "%projectManagerFork.commands.supportProjectManager.title%"
 			},
 			{
-				"command": "_projectManager.openSideBar",
-				"title": "%projectManager.commands.openSideBar.title%"
+				"command": "_projectManagerFork.openSideBar",
+				"title": "%projectManagerFork.commands.openSideBar.title%"
 			}
 		],
 		"menus": {
 			"commandPalette": [
 				{
-					"command": "_projectManager.open",
+					"command": "_projectManagerFork.open",
 					"when": "false"
 				},
 				{
-					"command": "_projectManager.openInNewWindow",
+					"command": "_projectManagerFork.openInNewWindow",
 					"when": "false"
 				},
 				{
-					"command": "projectManager.addToWorkspace#sideBar",
+					"command": "projectManagerFork.addToWorkspace#sideBar",
 					"when": "false"
 				},
 				{
-					"command": "_projectManager.revealInFinder#sideBar",
+					"command": "_projectManagerFork.revealInFinder#sideBar",
 					"when": "false"
 				},
 				{
-					"command": "_projectManager.revealInExplorer#sideBar",
+					"command": "_projectManagerFork.revealInExplorer#sideBar",
 					"when": "false"
 				},
 				{
-					"command": "_projectManager.revealInFileManager#sideBar",
+					"command": "_projectManagerFork.revealInFileManager#sideBar",
 					"when": "false"
 				},
 				{
-					"command": "_projectManager.deleteProject",
+					"command": "_projectManagerFork.deleteProject",
 					"when": "false"
 				},
 				{
-					"command": "_projectManager.renameProject",
+					"command": "_projectManagerFork.renameProject",
 					"when": "false"
 				},
 				{
-					"command": "_projectManager.editTags",
+					"command": "_projectManagerFork.editTags",
 					"when": "false"
 				},
 				{
-					"command": "_projectManager.viewAsTags#sideBarFavorites",
+					"command": "_projectManagerFork.viewAsTags#sideBarFavorites",
 					"when": "false"
 				},
 				{
-					"command": "_projectManager.viewAsList#sideBarFavorites",
+					"command": "_projectManagerFork.viewAsList#sideBarFavorites",
 					"when": "false"
 				},
 				{
-					"command": "_projectManager.sortBySaved#sideBarFavorites",
+					"command": "_projectManagerFork.sortBySaved#sideBarFavorites",
 					"when": "false"
 				},
 				{
-					"command": "_projectManager.sortByName#sideBarFavorites",
+					"command": "_projectManagerFork.sortByName#sideBarFavorites",
 					"when": "false"
 				},
 				{
-					"command": "_projectManager.sortByPath#sideBarFavorites",
+					"command": "_projectManagerFork.sortByPath#sideBarFavorites",
 					"when": "false"
 				},
 				{
-					"command": "_projectManager.sortByRecent#sideBarFavorites",
+					"command": "_projectManagerFork.sortByRecent#sideBarFavorites",
 					"when": "false"
 				},
 				{
-					"command": "projectManager.filterProjectsByTag#sideBar",
+					"command": "projectManagerFork.filterProjectsByTag#sideBar",
 					"when": "false"
 				},
 				{
-					"command": "projectManager.listFavoriteProjects#sideBarFavorites",
+					"command": "projectManagerFork.listFavoriteProjects#sideBarFavorites",
 					"when": "false"
 				},
 				{
-					"command": "projectManager.listVSCodeProjects#sideBarVSCode",
+					"command": "projectManagerFork.listVSCodeProjects#sideBarVSCode",
 					"when": "false"
 				},
 				{
-					"command": "projectManager.listGitProjects#sideBarGit",
+					"command": "projectManagerFork.listGitProjects#sideBarGit",
 					"when": "false"
 				},
 				{
-					"command": "projectManager.listSVNProjects#sideBarSVN",
+					"command": "projectManagerFork.listSVNProjects#sideBarSVN",
 					"when": "false"
 				},
 				{
-					"command": "projectManager.listAnyProjects#sideBarAny",
+					"command": "projectManagerFork.listAnyProjects#sideBarAny",
 					"when": "false"
 				},
 				{
-					"command": "projectManager.listMercurialProjects#sideBarMercurial",
+					"command": "projectManagerFork.listMercurialProjects#sideBarMercurial",
 					"when": "false"
 				},
 				{
-					"command": "projectManager.openSettings#sideBarFavorites",
+					"command": "projectManagerFork.openSettings#sideBarFavorites",
 					"when": "false"
 				},
 				{
-					"command": "projectManager.openSettings#sideBarVSCode",
+					"command": "projectManagerFork.openSettings#sideBarVSCode",
 					"when": "false"
 				},
 				{
-					"command": "projectManager.openSettings#sideBarSVN",
+					"command": "projectManagerFork.openSettings#sideBarSVN",
 					"when": "false"
 				},
 				{
-					"command": "projectManager.openSettings#sideBarGit",
+					"command": "projectManagerFork.openSettings#sideBarGit",
 					"when": "false"
 				},
 				{
-					"command": "projectManager.openSettings#sideBarAny",
+					"command": "projectManagerFork.openSettings#sideBarAny",
 					"when": "false"
 				},
 				{
-					"command": "projectManager.openSettings#sideBarMercurial",
+					"command": "projectManagerFork.openSettings#sideBarMercurial",
 					"when": "false"
 				},
 				{
-					"command": "_projectManager.whatsNewContextMenu",
+					"command": "_projectManagerFork.whatsNewContextMenu",
 					"when": "false"
 				},
 				{
-					"command": "projectManager.hideGitWelcome",
+					"command": "projectManagerFork.hideGitWelcome",
 					"when": "false"
 				},
 				{
-					"command": "projectManager.showGitWelcome",
+					"command": "projectManagerFork.showGitWelcome",
 					"when": "false"
 				},
 				{
-					"command": "_projectManager.openFolderWelcome",
+					"command": "_projectManagerFork.openFolderWelcome",
 					"when": "false"
 				},
 				{
-					"command": "_projectManager.openSideBar",
+					"command": "_projectManagerFork.openSideBar",
 					"when": "false"
 				}
 			],
 			"view/title": [
 				{
-					"command": "projectManager.saveProject",
-					"when": "view == projectsExplorerFavorites",
+					"command": "projectManagerFork.saveProject",
+					"when": "view == projectsExplorerForkFavorites",
 					"group": "navigation@10"
 				},
 				{
-					"command": "projectManager.editProjects",
-					"when": "view == projectsExplorerFavorites",
+					"command": "projectManagerFork.editProjects",
+					"when": "view == projectsExplorerForkFavorites",
 					"group": "navigation@11"
 				},
 				{
-					"command": "_projectManager.viewAsTags#sideBarFavorites",
-					"when": "view == projectsExplorerFavorites && projectManager.viewAsList",
+					"command": "_projectManagerFork.viewAsTags#sideBarFavorites",
+					"when": "view == projectsExplorerForkFavorites && projectManagerFork.viewAsList",
 					"group": "navigation@12"
 				},
 				{
-					"command": "_projectManager.viewAsList#sideBarFavorites",
-					"when": "view == projectsExplorerFavorites && !projectManager.viewAsList",
+					"command": "_projectManagerFork.viewAsList#sideBarFavorites",
+					"when": "view == projectsExplorerForkFavorites && !projectManagerFork.viewAsList",
 					"group": "navigation@13"
 				},
 				{
-					"command": "projectManager.listFavoriteProjects#sideBarFavorites",
-					"when": "view == projectsExplorerFavorites",
+					"command": "projectManagerFork.listFavoriteProjects#sideBarFavorites",
+					"when": "view == projectsExplorerForkFavorites",
 					"group": "navigation@14"
 				},
 				{
-					"command": "projectManager.filterProjectsByTag#sideBar",
-					"when": "view == projectsExplorerFavorites",
+					"command": "projectManagerFork.filterProjectsByTag#sideBar",
+					"when": "view == projectsExplorerForkFavorites",
 					"group": "navigation@14"
 				},
 				{
-					"submenu": "projectManager.sideBar.favorites.title",
-					"when": "view == projectsExplorerFavorites",
-					"group": "1_projectManager"
+					"submenu": "projectManagerFork.sideBar.favorites.title",
+					"when": "view == projectsExplorerForkFavorites",
+					"group": "1_projectManagerFork"
 				},
 				{
-					"command": "projectManager.openSettings#sideBarFavorites",
-					"when": "view == projectsExplorerFavorites",
-					"group": "2_projectManager"
+					"command": "projectManagerFork.openSettings#sideBarFavorites",
+					"when": "view == projectsExplorerForkFavorites",
+					"group": "2_projectManagerFork"
 				},
 				{
-					"command": "projectManager.showGitWelcome",
-					"when": "view == projectsExplorerFavorites && projectManager.hiddenGitWelcome",
-					"group": "2_projectManager"
+					"command": "projectManagerFork.showGitWelcome",
+					"when": "view == projectsExplorerForkFavorites && projectManagerFork.hiddenGitWelcome",
+					"group": "2_projectManagerFork"
 				},
 				{
-					"command": "projectManager.listVSCodeProjects#sideBarVSCode",
-					"when": "view == projectsExplorerVSCode",
+					"command": "projectManagerFork.listVSCodeProjects#sideBarVSCode",
+					"when": "view == projectsExplorerForkVSCode",
 					"group": "navigation@10"
 				},
 				{
-					"command": "projectManager.refreshVSCodeProjects",
-					"when": "view == projectsExplorerVSCode",
+					"command": "projectManagerFork.refreshVSCodeProjects",
+					"when": "view == projectsExplorerForkVSCode",
 					"group": "navigation@11"
 				},
 				{
-					"command": "projectManager.openSettings#sideBarVSCode",
-					"when": "view == projectsExplorerVSCode",
-					"group": "2_projectManager"
+					"command": "projectManagerFork.openSettings#sideBarVSCode",
+					"when": "view == projectsExplorerForkVSCode",
+					"group": "2_projectManagerFork"
 				},
 				{
-					"command": "projectManager.listGitProjects#sideBarGit",
-					"when": "view == projectsExplorerGit",
+					"command": "projectManagerFork.listGitProjects#sideBarGit",
+					"when": "view == projectsExplorerForkGit",
 					"group": "navigation@10"
 				},
 				{
-					"command": "projectManager.refreshGitProjects",
-					"when": "view == projectsExplorerGit",
+					"command": "projectManagerFork.refreshGitProjects",
+					"when": "view == projectsExplorerForkGit",
 					"group": "navigation@11"
 				},
 				{
-					"command": "projectManager.openSettings#sideBarGit",
-					"when": "view == projectsExplorerGit",
-					"group": "2_projectManager"
+					"command": "projectManagerFork.openSettings#sideBarGit",
+					"when": "view == projectsExplorerForkGit",
+					"group": "2_projectManagerFork"
 				},
 				{
-					"command": "projectManager.listSVNProjects#sideBarSVN",
-					"when": "view == projectsExplorerSVN",
+					"command": "projectManagerFork.listSVNProjects#sideBarSVN",
+					"when": "view == projectsExplorerForkSVN",
 					"group": "navigation@10"
 				},
 				{
-					"command": "projectManager.refreshSVNProjects",
-					"when": "view == projectsExplorerSVN",
+					"command": "projectManagerFork.refreshSVNProjects",
+					"when": "view == projectsExplorerForkSVN",
 					"group": "navigation@11"
 				},
 				{
-					"command": "projectManager.openSettings#sideBarSVN",
-					"when": "view == projectsExplorerSVN",
-					"group": "2_projectManager"
+					"command": "projectManagerFork.openSettings#sideBarSVN",
+					"when": "view == projectsExplorerForkSVN",
+					"group": "2_projectManagerFork"
 				},
 				{
-					"command": "projectManager.listAnyProjects#sideBarAny",
-					"when": "view == projectsExplorerAny",
+					"command": "projectManagerFork.listAnyProjects#sideBarAny",
+					"when": "view == projectsExplorerForkAny",
 					"group": "navigation@10"
 				},
 				{
-					"command": "projectManager.refreshAnyProjects",
-					"when": "view == projectsExplorerAny",
+					"command": "projectManagerFork.refreshAnyProjects",
+					"when": "view == projectsExplorerForkAny",
 					"group": "navigation@11"
 				},
 				{
-					"command": "projectManager.openSettings#sideBarAny",
-					"when": "view == projectsExplorerAny",
-					"group": "2_projectManager"
+					"command": "projectManagerFork.openSettings#sideBarAny",
+					"when": "view == projectsExplorerForkAny",
+					"group": "2_projectManagerFork"
 				},
 				{
-					"command": "projectManager.listMercurialProjects#sideBarMercurial",
-					"when": "view == projectsExplorerMercurial",
+					"command": "projectManagerFork.listMercurialProjects#sideBarMercurial",
+					"when": "view == projectsExplorerForkMercurial",
 					"group": "navigation@10"
 				},
 				{
-					"command": "projectManager.refreshMercurialProjects",
-					"when": "view == projectsExplorerMercurial",
+					"command": "projectManagerFork.refreshMercurialProjects",
+					"when": "view == projectsExplorerForkMercurial",
 					"group": "navigation@11"
 				},
 				{
-					"command": "projectManager.openSettings#sideBarMercurial",
-					"when": "view == projectsExplorerMercurial",
-					"group": "2_projectManager"
+					"command": "projectManagerFork.openSettings#sideBarMercurial",
+					"when": "view == projectsExplorerForkMercurial",
+					"group": "2_projectManagerFork"
 				}
 			],
 			"view/item/context": [
 				{
-					"command": "_projectManager.openInNewWindow",
-					"when": "view =~ /projectsExplorer(Favorites|VSCode|Git|SVN|Any|Mercurial)/ && viewItem == ProjectNodeKind",
+					"command": "_projectManagerFork.openInNewWindow",
+					"when": "view =~ /projectsExplorerFork(Favorites|VSCode|Git|SVN|Any|Mercurial)/ && viewItem == ProjectNodeKind",
 					"group": "inline"
 				},
 				{
-					"command": "_projectManager.open",
-					"when": "view =~ /projectsExplorer(Favorites|VSCode|Git|SVN|Any|Mercurial)/ && viewItem == ProjectNodeKind",
+					"command": "_projectManagerFork.open",
+					"when": "view =~ /projectsExplorerFork(Favorites|VSCode|Git|SVN|Any|Mercurial)/ && viewItem == ProjectNodeKind",
 					"group": "navigation"
 				},
 				{
-					"command": "_projectManager.openInNewWindow",
-					"when": "view =~ /projectsExplorer(Favorites|VSCode|Git|SVN|Any|Mercurial)/ && viewItem == ProjectNodeKind",
+					"command": "_projectManagerFork.openInNewWindow",
+					"when": "view =~ /projectsExplorerFork(Favorites|VSCode|Git|SVN|Any|Mercurial)/ && viewItem == ProjectNodeKind",
 					"group": "navigation"
 				},
 				{
-					"command": "_projectManager.revealInFinder#sideBar",
-					"when": "view =~ /projectsExplorer(Favorites|VSCode|Git|SVN|Any|Mercurial)/ && viewItem == ProjectNodeKind && isMac",
+					"command": "_projectManagerFork.revealInFinder#sideBar",
+					"when": "view =~ /projectsExplorerFork(Favorites|VSCode|Git|SVN|Any|Mercurial)/ && viewItem == ProjectNodeKind && isMac",
 					"group": "navigation@2"
 				},
 				{
-					"command": "_projectManager.revealInExplorer#sideBar",
-					"when": "view =~ /projectsExplorer(Favorites|VSCode|Git|SVN|Any|Mercurial)/ && viewItem == ProjectNodeKind && isWindows",
+					"command": "_projectManagerFork.revealInExplorer#sideBar",
+					"when": "view =~ /projectsExplorerFork(Favorites|VSCode|Git|SVN|Any|Mercurial)/ && viewItem == ProjectNodeKind && isWindows",
 					"group": "navigation@2"
 				},
 				{
-					"command": "_projectManager.revealInFileManager#sideBar",
-					"when": "view =~ /projectsExplorer(Favorites|VSCode|Git|SVN|Any|Mercurial)/ && viewItem == ProjectNodeKind && isLinux",
+					"command": "_projectManagerFork.revealInFileManager#sideBar",
+					"when": "view =~ /projectsExplorerFork(Favorites|VSCode|Git|SVN|Any|Mercurial)/ && viewItem == ProjectNodeKind && isLinux",
 					"group": "navigation@2"
 				},
 				{
-					"command": "_projectManager.deleteProject",
-					"when": "view == projectsExplorerFavorites && viewItem == ProjectNodeKind",
+					"command": "_projectManagerFork.deleteProject",
+					"when": "view == projectsExplorerForkFavorites && viewItem == ProjectNodeKind",
 					"group": "favorites"
 				},
 				{
-					"command": "_projectManager.renameProject",
-					"when": "view == projectsExplorerFavorites && viewItem == ProjectNodeKind",
+					"command": "_projectManagerFork.renameProject",
+					"when": "view == projectsExplorerForkFavorites && viewItem == ProjectNodeKind",
 					"group": "favorites"
 				},
 				{
-					"command": "_projectManager.editTags",
-					"when": "view == projectsExplorerFavorites && viewItem == ProjectNodeKind",
+					"command": "_projectManagerFork.editTags",
+					"when": "view == projectsExplorerForkFavorites && viewItem == ProjectNodeKind",
 					"group": "favorites"
 				},
 				{
-					"command": "_projectManager.toggleProjectEnabled",
-					"when": "view == projectsExplorerFavorites && viewItem == ProjectNodeKind",
+					"command": "_projectManagerFork.toggleProjectEnabled",
+					"when": "view == projectsExplorerForkFavorites && viewItem == ProjectNodeKind",
 					"group": "favorites"
 				},
 				{
-					"command": "projectManager.addToWorkspace#sideBar",
-					"when": "view =~ /projectsExplorer(Favorites|VSCode|Git|SVN|Any|Mercurial)/ && viewItem == ProjectNodeKind",
+					"command": "projectManagerFork.addToWorkspace#sideBar",
+					"when": "view =~ /projectsExplorerFork(Favorites|VSCode|Git|SVN|Any|Mercurial)/ && viewItem == ProjectNodeKind",
 					"group": "workspace"
 				},
 				{
-					"command": "projectManager.addToFavorites",
-					"when": "view =~ /projectsExplorer(VSCode|Git|SVN|Any|Mercurial)/ && viewItem == ProjectNodeKind",
+					"command": "projectManagerFork.addToFavorites",
+					"when": "view =~ /projectsExplorerFork(VSCode|Git|SVN|Any|Mercurial)/ && viewItem == ProjectNodeKind",
 					"group": "workspace"
 				}
 			],
 			"extension/context": [
 				{
-					"command": "_projectManager.whatsNewContextMenu",
-					"group": "projectManager",
-					"when": "extension == alefragnani.project-manager && extensionStatus == installed"
+					"command": "_projectManagerFork.whatsNewContextMenu",
+					"group": "projectManagerFork",
+					"when": "extension == adriancepeda.project-manager-fork && extensionStatus == installed"
 				}
 			],
-			"projectManager.sideBar.favorites.title": [
+			"projectManagerFork.sideBar.favorites.title": [
 				{
-					"command": "_projectManager.viewAsList#sideBarFavorites",
-					"group": "1_projectManager#sideBarFavorites"
+					"command": "_projectManagerFork.viewAsList#sideBarFavorites",
+					"group": "1_projectManagerFork#sideBarFavorites"
 				},
 				{
-					"command": "_projectManager.viewAsTags#sideBarFavorites",
-					"group": "1_projectManager#sideBarFavorites"
+					"command": "_projectManagerFork.viewAsTags#sideBarFavorites",
+					"group": "1_projectManagerFork#sideBarFavorites"
 				},
 				{
-					"command": "_projectManager.sortBySaved#sideBarFavorites",
-					"group": "2_projectManager#sideBarFavorites"
+					"command": "_projectManagerFork.sortBySaved#sideBarFavorites",
+					"group": "2_projectManagerFork#sideBarFavorites"
 				},
 				{
-					"command": "_projectManager.sortByName#sideBarFavorites",
-					"group": "2_projectManager#sideBarFavorites"
+					"command": "_projectManagerFork.sortByName#sideBarFavorites",
+					"group": "2_projectManagerFork#sideBarFavorites"
 				},
 				{
-					"command": "_projectManager.sortByPath#sideBarFavorites",
-					"group": "2_projectManager#sideBarFavorites"
+					"command": "_projectManagerFork.sortByPath#sideBarFavorites",
+					"group": "2_projectManagerFork#sideBarFavorites"
 				},
 				{
-					"command": "_projectManager.sortByRecent#sideBarFavorites",
-					"group": "2_projectManager#sideBarFavorites"
+					"command": "_projectManagerFork.sortByRecent#sideBarFavorites",
+					"group": "2_projectManagerFork#sideBarFavorites"
 				}
 			]
 		},
 		"submenus": [
 			{
-				"id": "projectManager.sideBar.favorites.title",
-				"label": "%projectManager.submenus.viewAndSort#sideBarFavorites.title%"
+				"id": "projectManagerFork.sideBar.favorites.title",
+				"label": "%projectManagerFork.submenus.viewAndSort#sideBarFavorites.title%"
 			}
 		],
 		"configuration": [
 			{
-				"id": "projectManager-general",
-				"title": "%projectManager.configuration.title%",
+				"id": "projectManagerFork-general",
+				"title": "%projectManagerFork.configuration.title%",
 				"properties": {
-					"projectManager.showProjectNameInStatusBar": {
+					"projectManagerFork.showProjectNameInStatusBar": {
 						"type": "boolean",
 						"default": true,
-						"description": "%projectManager.configuration.showProjectNameInStatusBar.description%"
+						"description": "%projectManagerFork.configuration.showProjectNameInStatusBar.description%"
 					},
-					"projectManager.openInNewWindowWhenClickingInStatusBar": {
+					"projectManagerFork.openInNewWindowWhenClickingInStatusBar": {
 						"type": "boolean",
 						"default": false,
-						"description": "%projectManager.configuration.openInNewWindowWhenClickingInStatusBar.description%"
+						"description": "%projectManagerFork.configuration.openInNewWindowWhenClickingInStatusBar.description%"
 					},
-					"projectManager.removeCurrentProjectFromList": {
+					"projectManagerFork.removeCurrentProjectFromList": {
 						"type": "boolean",
 						"default": true,
-						"description": "%projectManager.configuration.removeCurrentProjectFromList.description%"
+						"description": "%projectManagerFork.configuration.removeCurrentProjectFromList.description%"
 					},
-					"projectManager.sortList": {
+					"projectManagerFork.sortList": {
 						"type": "string",
 						"default": "Name",
-						"description": "%projectManager.configuration.sortList.description%",
+						"description": "%projectManagerFork.configuration.sortList.description%",
 						"enum": [
 							"Saved",
 							"Name",
@@ -725,47 +725,47 @@
 						],
 						"scope": "application"
 					},
-					"projectManager.groupList": {
+					"projectManagerFork.groupList": {
 						"type": "boolean",
 						"default": false,
-						"description": "%projectManager.configuration.groupList.description%"
+						"description": "%projectManagerFork.configuration.groupList.description%"
 					},
-					"projectManager.projectsLocation": {
+					"projectManagerFork.projectsLocation": {
 						"type": "string",
 						"default": "",
-						"description": "%projectManager.configuration.projectsLocation.description%"
+						"description": "%projectManagerFork.configuration.projectsLocation.description%"
 					},
-					"projectManager.cacheProjectsBetweenSessions": {
+					"projectManagerFork.cacheProjectsBetweenSessions": {
 						"type": "boolean",
 						"default": true,
-						"description": "%projectManager.configuration.cacheProjectsBetweenSessions.description%"
+						"description": "%projectManagerFork.configuration.cacheProjectsBetweenSessions.description%"
 					},
-					"projectManager.ignoreProjectsWithinProjects": {
+					"projectManagerFork.ignoreProjectsWithinProjects": {
 						"type": "boolean",
 						"default": false,
-						"description": "%projectManager.configuration.ignoreProjectsWithinProjects.description%"
+						"description": "%projectManagerFork.configuration.ignoreProjectsWithinProjects.description%"
 					},
-					"projectManager.checkInvalidPathsBeforeListing": {
+					"projectManagerFork.checkInvalidPathsBeforeListing": {
 						"type": "boolean",
 						"default": true,
-						"description": "%projectManager.configuration.checkInvalidPathsBeforeListing.description%"
+						"description": "%projectManagerFork.configuration.checkInvalidPathsBeforeListing.description%"
 					},
-					"projectManager.supportSymlinksOnBaseFolders": {
+					"projectManagerFork.supportSymlinksOnBaseFolders": {
 						"type": "boolean",
 						"default": false,
-						"description": "%projectManager.configuration.supportSymlinksOnBaseFolders.description%"
+						"description": "%projectManagerFork.configuration.supportSymlinksOnBaseFolders.description%"
 					},
-					"projectManager.showParentFolderInfoOnDuplicates": {
+					"projectManagerFork.showParentFolderInfoOnDuplicates": {
 						"type": "boolean",
 						"default": false,
-						"description": "%projectManager.configuration.showParentFolderInfoOnDuplicates.description%"
+						"description": "%projectManagerFork.configuration.showParentFolderInfoOnDuplicates.description%"
 					},
-					"projectManager.filterOnFullPath": {
+					"projectManagerFork.filterOnFullPath": {
 						"type": "boolean",
 						"default": false,
-						"description": "%projectManager.configuration.filterOnFullPath.description%"
+						"description": "%projectManagerFork.configuration.filterOnFullPath.description%"
 					},
-					"projectManager.openInCurrenWindowIfEmpty": {
+					"projectManagerFork.openInCurrenWindowIfEmpty": {
 						"type": "string",
 						"default": "always",
 						"enum": [
@@ -780,10 +780,10 @@
 							"Only open in the current window if you use the Side Bar",
 							"Works as today. The Open in New Window command will always open in New Window"
 						],
-						"description": "%projectManager.configuration.openInCurrenWindowIfEmpty.description%",
-						"deprecationMessage": "%projectManager.configuration.openInCurrenWindowIfEmpty.deprecation%"
+						"description": "%projectManagerFork.configuration.openInCurrenWindowIfEmpty.description%",
+						"deprecationMessage": "%projectManagerFork.configuration.openInCurrenWindowIfEmpty.deprecation%"
 					},
-					"projectManager.openInCurrentWindowIfEmpty": {
+					"projectManagerFork.openInCurrentWindowIfEmpty": {
 						"type": "string",
 						"default": "always",
 						"enum": [
@@ -798,9 +798,9 @@
 							"Only open in the current window if you use the Side Bar",
 							"Works as today. The Open in New Window command will always open in New Window"
 						],
-						"description": "%projectManager.configuration.openInCurrentWindowIfEmpty.description%"
+						"description": "%projectManagerFork.configuration.openInCurrentWindowIfEmpty.description%"
 					},
-					"projectManager.confirmSwitchOnActiveWindow": {
+					"projectManagerFork.confirmSwitchOnActiveWindow": {
 						"type": "string",
 						"default": "never",
 						"enum": [
@@ -815,9 +815,9 @@
 							"Only ask for confirmation if you use the Side Bar",
 							"Whenever you call the Open command, it will ask for confirmation"
 						],
-						"description": "%projectManager.configuration.confirmSwitchOnActiveWindow.description%"
+						"description": "%projectManagerFork.configuration.confirmSwitchOnActiveWindow.description%"
 					},
-					"projectManager.tags": {
+					"projectManagerFork.tags": {
 						"type": "array",
 						"default": [
 							"Personal",
@@ -826,9 +826,9 @@
 						"items": {
 							"type": "string"
 						},
-						"description": "%projectManager.configuration.tags.description%"
+						"description": "%projectManagerFork.configuration.tags.description%"
 					},
-					"projectManager.tags.collapseItems": {
+					"projectManagerFork.tags.collapseItems": {
 						"type": "string",
 						"default": "startExpanded",
 						"enum": [
@@ -838,14 +838,14 @@
 							"startCollapsed"
 						],
 						"enumDescriptions": [
-							"%projectManager.configuration.tags.collapseItems.enumDescriptions.alwaysExpanded%",
-							"%projectManager.configuration.tags.collapseItems.enumDescriptions.alwaysCollapsed%",
-							"%projectManager.configuration.tags.collapseItems.enumDescriptions.startExpanded%",
-							"%projectManager.configuration.tags.collapseItems.enumDescriptions.startCollapsed%"
+							"%projectManagerFork.configuration.tags.collapseItems.enumDescriptions.alwaysExpanded%",
+							"%projectManagerFork.configuration.tags.collapseItems.enumDescriptions.alwaysCollapsed%",
+							"%projectManagerFork.configuration.tags.collapseItems.enumDescriptions.startExpanded%",
+							"%projectManagerFork.configuration.tags.collapseItems.enumDescriptions.startCollapsed%"
 						],
-						"description": "%projectManager.configuration.tags.collapseItems.description%"
+						"description": "%projectManagerFork.configuration.tags.collapseItems.description%"
 					},
-					"projectManager.git.showBranchName": {
+					"projectManagerFork.git.showBranchName": {
 						"type": "string",
 						"enum": [
 							"never",
@@ -854,29 +854,29 @@
 							"always"
 						],
 						"enumDescriptions": [
-							"%projectManager.configuration.git.showBranchName.enumDescriptions.never%",
-							"%projectManager.configuration.git.showBranchName.enumDescriptions.onlyInSideBar%",
-							"%projectManager.configuration.git.showBranchName.enumDescriptions.onlyInCommandPalette%",
-							"%projectManager.configuration.git.showBranchName.enumDescriptions.always%"
+							"%projectManagerFork.configuration.git.showBranchName.enumDescriptions.never%",
+							"%projectManagerFork.configuration.git.showBranchName.enumDescriptions.onlyInSideBar%",
+							"%projectManagerFork.configuration.git.showBranchName.enumDescriptions.onlyInCommandPalette%",
+							"%projectManagerFork.configuration.git.showBranchName.enumDescriptions.always%"
 						],
 						"default": "never",
-						"description": "%projectManager.configuration.git.showBranchName.description%"
+						"description": "%projectManagerFork.configuration.git.showBranchName.description%"
 					}
 				}
 			},
 			{
-				"id": "projectManager-git",
+				"id": "projectManagerFork-git",
 				"title": "Git",
 				"properties": {
-					"projectManager.git.baseFolders": {
+					"projectManagerFork.git.baseFolders": {
 						"type": "array",
 						"default": [],
 						"items": {
 							"type": "string"
 						},
-						"markdownDescription": "%projectManager.configuration.git.baseFolders.description%"
+						"markdownDescription": "%projectManagerFork.configuration.git.baseFolders.description%"
 					},
-					"projectManager.git.ignoredFolders": {
+					"projectManagerFork.git.ignoredFolders": {
 						"type": "array",
 						"default": [
 							"node_modules",
@@ -888,28 +888,28 @@
 						"items": {
 							"type": "string"
 						},
-						"markdownDescription": "%projectManager.configuration.git.ignoredFolders.description%"
+						"markdownDescription": "%projectManagerFork.configuration.git.ignoredFolders.description%"
 					},
-					"projectManager.git.maxDepthRecursion": {
+					"projectManagerFork.git.maxDepthRecursion": {
 						"type": "integer",
 						"default": 4,
-						"description": "%projectManager.configuration.git.maxDepthRecursion.description%"
+						"description": "%projectManagerFork.configuration.git.maxDepthRecursion.description%"
 					}
 				}
 			},
 			{
-				"id": "projectManager-hg",
+				"id": "projectManagerFork-hg",
 				"title": "Mercurial",
 				"properties": {
-					"projectManager.hg.baseFolders": {
+					"projectManagerFork.hg.baseFolders": {
 						"type": "array",
 						"default": [],
 						"items": {
 							"type": "string"
 						},
-						"markdownDescription": "%projectManager.configuration.hg.baseFolders.description%"
+						"markdownDescription": "%projectManagerFork.configuration.hg.baseFolders.description%"
 					},
-					"projectManager.hg.ignoredFolders": {
+					"projectManagerFork.hg.ignoredFolders": {
 						"type": "array",
 						"default": [
 							"node_modules",
@@ -921,28 +921,28 @@
 						"items": {
 							"type": "string"
 						},
-						"markdownDescription": "%projectManager.configuration.hg.ignoredFolders.description%"
+						"markdownDescription": "%projectManagerFork.configuration.hg.ignoredFolders.description%"
 					},
-					"projectManager.hg.maxDepthRecursion": {
+					"projectManagerFork.hg.maxDepthRecursion": {
 						"type": "integer",
 						"default": 4,
-						"description": "%projectManager.configuration.hg.maxDepthRecursion.description%"
+						"description": "%projectManagerFork.configuration.hg.maxDepthRecursion.description%"
 					}
 				}
 			},
 			{
-				"id": "projectManager-svn",
+				"id": "projectManagerFork-svn",
 				"title": "SVN",
 				"properties": {
-					"projectManager.svn.baseFolders": {
+					"projectManagerFork.svn.baseFolders": {
 						"type": "array",
 						"default": [],
 						"items": {
 							"type": "string"
 						},
-						"markdownDescription": "%projectManager.configuration.svn.baseFolders.description%"
+						"markdownDescription": "%projectManagerFork.configuration.svn.baseFolders.description%"
 					},
-					"projectManager.svn.ignoredFolders": {
+					"projectManagerFork.svn.ignoredFolders": {
 						"type": "array",
 						"default": [
 							"node_modules",
@@ -953,28 +953,28 @@
 						"items": {
 							"type": "string"
 						},
-						"markdownDescription": "%projectManager.configuration.svn.ignoredFolders.description%"
+						"markdownDescription": "%projectManagerFork.configuration.svn.ignoredFolders.description%"
 					},
-					"projectManager.svn.maxDepthRecursion": {
+					"projectManagerFork.svn.maxDepthRecursion": {
 						"type": "integer",
 						"default": 4,
-						"description": "%projectManager.configuration.svn.maxDepthRecursion.description%"
+						"description": "%projectManagerFork.configuration.svn.maxDepthRecursion.description%"
 					}
 				}
 			},
 			{
-				"id": "projectManager-vscode",
+				"id": "projectManagerFork-vscode",
 				"title": "VS Code",
 				"properties": {
-					"projectManager.vscode.baseFolders": {
+					"projectManagerFork.vscode.baseFolders": {
 						"type": "array",
 						"default": [],
 						"items": {
 							"type": "string"
 						},
-						"markdownDescription": "%projectManager.configuration.vscode.baseFolders.description%"
+						"markdownDescription": "%projectManagerFork.configuration.vscode.baseFolders.description%"
 					},
-					"projectManager.vscode.ignoredFolders": {
+					"projectManagerFork.vscode.ignoredFolders": {
 						"type": "array",
 						"default": [
 							"node_modules",
@@ -985,28 +985,28 @@
 						"items": {
 							"type": "string"
 						},
-						"markdownDescription": "%projectManager.configuration.vscode.ignoredFolders.description%"
+						"markdownDescription": "%projectManagerFork.configuration.vscode.ignoredFolders.description%"
 					},
-					"projectManager.vscode.maxDepthRecursion": {
+					"projectManagerFork.vscode.maxDepthRecursion": {
 						"type": "integer",
 						"default": 4,
-						"description": "%projectManager.configuration.vscode.maxDepthRecursion.description%"
+						"description": "%projectManagerFork.configuration.vscode.maxDepthRecursion.description%"
 					}
 				}
 			},
 			{
-				"id": "projectManager-any",
+				"id": "projectManagerFork-any",
 				"title": "Any",
 				"properties": {
-					"projectManager.any.baseFolders": {
+					"projectManagerFork.any.baseFolders": {
 						"type": "array",
 						"default": [],
 						"items": {
 							"type": "string"
 						},
-						"markdownDescription": "%projectManager.configuration.any.baseFolders.description%"
+						"markdownDescription": "%projectManagerFork.configuration.any.baseFolders.description%"
 					},
-					"projectManager.any.ignoredFolders": {
+					"projectManagerFork.any.ignoredFolders": {
 						"type": "array",
 						"default": [
 							"node_modules",
@@ -1017,25 +1017,25 @@
 						"items": {
 							"type": "string"
 						},
-						"markdownDescription": "%projectManager.configuration.any.ignoredFolders.description%"
+						"markdownDescription": "%projectManagerFork.configuration.any.ignoredFolders.description%"
 					},
-					"projectManager.any.excludeBaseFoldersFromResults": {
+					"projectManagerFork.any.excludeBaseFoldersFromResults": {
 						"type": "boolean",
 						"default": false,
-						"description": "%projectManager.configuration.any.excludeBaseFoldersFromResults.description%"
+						"description": "%projectManagerFork.configuration.any.excludeBaseFoldersFromResults.description%"
 					},
-					"projectManager.any.maxDepthRecursion": {
+					"projectManagerFork.any.maxDepthRecursion": {
 						"type": "integer",
 						"default": 4,
-						"description": "%projectManager.configuration.any.maxDepthRecursion.description%"
+						"description": "%projectManagerFork.configuration.any.maxDepthRecursion.description%"
 					}
 				}
 			}
 		],
 		"colors": [
 			{
-				"id": "projectManager.sideBar.currentProjectHighlightForeground",
-				"description": "%projectManager.colors.sideBar.currentProjectHighlightForeground.description%",
+				"id": "projectManagerFork.sideBar.currentProjectHighlightForeground",
+				"description": "%projectManagerFork.colors.sideBar.currentProjectHighlightForeground.description%",
 				"defaults": {
 					"light": "#2fb15b",
 					"dark": "#2fb15b",
@@ -1045,61 +1045,61 @@
 		],
 		"keybindings": [
 			{
-				"command": "projectManager.listProjects",
+				"command": "projectManagerFork.listProjects",
 				"key": "shift+alt+p",
 				"mac": "cmd+alt+p"
 			}
 		],
 		"walkthroughs": [
 			{
-				"id": "projectManagerWelcome",
-				"title": "%projectManager.walkthroughs.title%",
-				"description": "%projectManager.walkthroughs.description%",
+				"id": "projectManagerForkWelcome",
+				"title": "%projectManagerFork.walkthroughs.title%",
+				"description": "%projectManagerFork.walkthroughs.description%",
 				"steps": [
 					{
 						"id": "saveYourFavoriteProjects",
-						"title": "%projectManager.walkthroughs.saveYourFavoriteProjects.title%",
-						"description": "%projectManager.walkthroughs.saveYourFavoriteProjects.description%",
+						"title": "%projectManagerFork.walkthroughs.saveYourFavoriteProjects.title%",
+						"description": "%projectManagerFork.walkthroughs.saveYourFavoriteProjects.description%",
 						"media": {
 							"markdown": "walkthrough/saveYourFavoriteProjects.md"
 						}
 					},
 					{
 						"id": "autoDetectGitRepositories",
-						"title": "%projectManager.walkthroughs.autoDetectGitRepositories.title%",
-						"description": "%projectManager.walkthroughs.autoDetectGitRepositories.description%",
+						"title": "%projectManagerFork.walkthroughs.autoDetectGitRepositories.title%",
+						"description": "%projectManagerFork.walkthroughs.autoDetectGitRepositories.description%",
 						"media": {
 							"markdown": "walkthrough/autoDetectGitRepositories.md"
 						}
 					},
 					{
 						"id": "findAndOpenProjects",
-						"title": "%projectManager.walkthroughs.findAndOpenProjects.title%",
-						"description": "%projectManager.walkthroughs.findAndOpenProjects.description%",
+						"title": "%projectManagerFork.walkthroughs.findAndOpenProjects.title%",
+						"description": "%projectManagerFork.walkthroughs.findAndOpenProjects.description%",
 						"media": {
 							"markdown": "walkthrough/findAndOpenProjects.md"
 						}
 					},
 					{
 						"id": "organizeWithTags",
-						"title": "%projectManager.walkthroughs.organizeWithTags.title%",
-						"description": "%projectManager.walkthroughs.organizeWithTags.description%",
+						"title": "%projectManagerFork.walkthroughs.organizeWithTags.title%",
+						"description": "%projectManagerFork.walkthroughs.organizeWithTags.description%",
 						"media": {
 							"markdown": "walkthrough/organizeWithTags.md"
 						}
 					},
 					{
 						"id": "exclusiveSideBar",
-						"title": "%projectManager.walkthroughs.exclusiveSideBar.title%",
-						"description": "%projectManager.walkthroughs.exclusiveSideBar.description%",
+						"title": "%projectManagerFork.walkthroughs.exclusiveSideBar.title%",
+						"description": "%projectManagerFork.walkthroughs.exclusiveSideBar.description%",
 						"media": {
 							"markdown": "walkthrough/exclusiveSideBar.md"
 						}
 					},
 					{
 						"id": "workingWithRemotes",
-						"title": "%projectManager.walkthroughs.workingWithRemotes.title%",
-						"description": "%projectManager.walkthroughs.workingWithRemotes.description%",
+						"title": "%projectManagerFork.walkthroughs.workingWithRemotes.title%",
+						"description": "%projectManagerFork.walkthroughs.workingWithRemotes.description%",
 						"media": {
 							"markdown": "walkthrough/workingWithRemotes.md"
 						}

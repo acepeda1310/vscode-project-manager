@@ -66,24 +66,24 @@ export async function activate(context: vscode.ExtensionContext) {
 
     registerWhatsNew();
 
-    context.subscriptions.push(vscode.commands.registerCommand("_projectManager.openFolderWelcome", () => {
+    context.subscriptions.push(vscode.commands.registerCommand("_projectManagerFork.openFolderWelcome", () => {
         const openFolderCommand = isWindows || isMacOS ? "workbench.action.files.openFolder" : "workbench.action.files.openFileFolder";
         vscode.commands.executeCommand(openFolderCommand);
     }));
-    context.subscriptions.push(vscode.commands.registerCommand("projectManager.hideGitWelcome", () => {
+    context.subscriptions.push(vscode.commands.registerCommand("projectManagerFork.hideGitWelcome", () => {
         context.globalState.update("hideGitWelcome", true);
         providerManager.showTreeViewFromAllProviders();
-        vscode.commands.executeCommand("setContext", "projectManager.hiddenGitWelcome", true);
+        vscode.commands.executeCommand("setContext", "projectManagerFork.hiddenGitWelcome", true);
     }));
-    context.subscriptions.push(vscode.commands.registerCommand("projectManager.showGitWelcome", () => {
+    context.subscriptions.push(vscode.commands.registerCommand("projectManagerFork.showGitWelcome", () => {
         context.globalState.update("hideGitWelcome", false);
         providerManager.showTreeViewFromAllProviders();
-        vscode.commands.executeCommand("setContext", "projectManager.hiddenGitWelcome", false);
+        vscode.commands.executeCommand("setContext", "projectManagerFork.hiddenGitWelcome", false);
     }));
     const hideGitWelcome = context.globalState.get<boolean>("hideGitWelcome", false);
-    vscode.commands.executeCommand("setContext", "projectManager.hiddenGitWelcome", hideGitWelcome);
+    vscode.commands.executeCommand("setContext", "projectManagerFork.hiddenGitWelcome", hideGitWelcome);
 
-    vscode.commands.registerCommand("_projectManager.open", async (projectPath: string, projectName: string, profile: string) => {
+    vscode.commands.registerCommand("_projectManagerFork.open", async (projectPath: string, projectName: string, profile: string) => {
         const uri = buildProjectUri(projectPath);
         if (!await canSwitchOnActiveWindow(CommandLocation.SideBar)) {
             return;
@@ -93,7 +93,7 @@ export async function activate(context: vscode.ExtensionContext) {
                 () => ({}),  // done
                 () => vscode.window.showInformationMessage(l10n.t("Could not open the project!")));
     });
-    vscode.commands.registerCommand("_projectManager.openInNewWindow", (node) => {
+    vscode.commands.registerCommand("_projectManagerFork.openInNewWindow", (node) => {
         const uri = buildProjectUri(node.command.arguments[0]);
         const openInNewWindow = shouldOpenInNewWindow(true, CommandLocation.SideBar);
         vscode.commands.executeCommand("vscode.openFolder", uri, { forceProfile: node.command.arguments[2] , forceNewWindow: openInNewWindow } )
@@ -103,41 +103,41 @@ export async function activate(context: vscode.ExtensionContext) {
     });
 
     // register commands (here, because it needs to be used right below if an invalid JSON is present)
-    vscode.commands.registerCommand("projectManager.saveProject", () => saveProject());
-    vscode.commands.registerCommand("projectManager.refreshProjects", () => refreshProjects(true, true));
+    vscode.commands.registerCommand("projectManagerFork.saveProject", () => saveProject());
+    vscode.commands.registerCommand("projectManagerFork.refreshProjects", () => refreshProjects(true, true));
     locators.registerCommands();
-    vscode.commands.registerCommand("projectManager.editProjects", () => editProjects());
-    vscode.commands.registerCommand("projectManager.listProjects", () => listProjects(false));
-    vscode.commands.registerCommand("projectManager.listProjectsNewWindow", () => listProjects(true));
+    vscode.commands.registerCommand("projectManagerFork.editProjects", () => editProjects());
+    vscode.commands.registerCommand("projectManagerFork.listProjects", () => listProjects(false));
+    vscode.commands.registerCommand("projectManagerFork.listProjectsNewWindow", () => listProjects(true));
     
-    vscode.commands.registerCommand("projectManager.listFavoriteProjects#sideBarFavorites", () => listStorageProjects());
-    vscode.commands.registerCommand("projectManager.listGitProjects#sideBarGit", () => listAutoDetectedProjects(locators.gitLocator));
-    vscode.commands.registerCommand("projectManager.listVSCodeProjects#sideBarVSCode", () => listAutoDetectedProjects(locators.vscLocator));
-    vscode.commands.registerCommand("projectManager.listSVNProjects#sideBarSVN", () => listAutoDetectedProjects(locators.svnLocator));
-    vscode.commands.registerCommand("projectManager.listMercurialProjects#sideBarMercurial", () => listAutoDetectedProjects(locators.mercurialLocator));
-    vscode.commands.registerCommand("projectManager.listAnyProjects#sideBarAny", () => listAutoDetectedProjects(locators.anyLocator));
+    vscode.commands.registerCommand("projectManagerFork.listFavoriteProjects#sideBarFavorites", () => listStorageProjects());
+    vscode.commands.registerCommand("projectManagerFork.listGitProjects#sideBarGit", () => listAutoDetectedProjects(locators.gitLocator));
+    vscode.commands.registerCommand("projectManagerFork.listVSCodeProjects#sideBarVSCode", () => listAutoDetectedProjects(locators.vscLocator));
+    vscode.commands.registerCommand("projectManagerFork.listSVNProjects#sideBarSVN", () => listAutoDetectedProjects(locators.svnLocator));
+    vscode.commands.registerCommand("projectManagerFork.listMercurialProjects#sideBarMercurial", () => listAutoDetectedProjects(locators.mercurialLocator));
+    vscode.commands.registerCommand("projectManagerFork.listAnyProjects#sideBarAny", () => listAutoDetectedProjects(locators.anyLocator));
 
     // new commands (ActivityBar)
-    vscode.commands.registerCommand("projectManager.addToWorkspace#sideBar", (node) => addProjectToWorkspace(node));
-    vscode.commands.registerCommand("projectManager.addToWorkspace", () => addProjectToWorkspace(undefined));
-    vscode.commands.registerCommand("_projectManager.deleteProject", (node) => deleteProject(node));
-    vscode.commands.registerCommand("_projectManager.renameProject", (node) => renameProject(node));
-    vscode.commands.registerCommand("_projectManager.editTags", (node) => editTags(node));
-    vscode.commands.registerCommand("projectManager.addToFavorites", (node) => saveProject(node));
-    vscode.commands.registerCommand("_projectManager.toggleProjectEnabled", (node) => toggleProjectEnabled(node));
+    vscode.commands.registerCommand("projectManagerFork.addToWorkspace#sideBar", (node) => addProjectToWorkspace(node));
+    vscode.commands.registerCommand("projectManagerFork.addToWorkspace", () => addProjectToWorkspace(undefined));
+    vscode.commands.registerCommand("_projectManagerFork.deleteProject", (node) => deleteProject(node));
+    vscode.commands.registerCommand("_projectManagerFork.renameProject", (node) => renameProject(node));
+    vscode.commands.registerCommand("_projectManagerFork.editTags", (node) => editTags(node));
+    vscode.commands.registerCommand("projectManagerFork.addToFavorites", (node) => saveProject(node));
+    vscode.commands.registerCommand("_projectManagerFork.toggleProjectEnabled", (node) => toggleProjectEnabled(node));
 
     const viewAsList = Container.context.globalState.get<boolean>("viewAsList", true);
-    vscode.commands.executeCommand("setContext", "projectManager.viewAsList", viewAsList);
-    vscode.commands.registerCommand("_projectManager.viewAsTags#sideBarFavorites", () => toggleViewAsFavoriteProjects(ViewFavoritesAs.VIEW_AS_TAGS));
-    vscode.commands.registerCommand("_projectManager.viewAsList#sideBarFavorites", () => toggleViewAsFavoriteProjects(ViewFavoritesAs.VIEW_AS_LIST));
-    vscode.commands.registerCommand("projectManager.filterProjectsByTag", () => filterProjectsByTag());
-    vscode.commands.registerCommand("projectManager.filterProjectsByTag#sideBar", () => filterProjectsByTag());
+    vscode.commands.executeCommand("setContext", "projectManagerFork.viewAsList", viewAsList);
+    vscode.commands.registerCommand("_projectManagerFork.viewAsTags#sideBarFavorites", () => toggleViewAsFavoriteProjects(ViewFavoritesAs.VIEW_AS_TAGS));
+    vscode.commands.registerCommand("_projectManagerFork.viewAsList#sideBarFavorites", () => toggleViewAsFavoriteProjects(ViewFavoritesAs.VIEW_AS_LIST));
+    vscode.commands.registerCommand("projectManagerFork.filterProjectsByTag", () => filterProjectsByTag());
+    vscode.commands.registerCommand("projectManagerFork.filterProjectsByTag#sideBar", () => filterProjectsByTag());
 
     function toggleViewAsFavoriteProjects(view: ViewFavoritesAs) {
         if (view === ViewFavoritesAs.VIEW_AS_LIST) {
-            vscode.commands.executeCommand("setContext", "projectManager.viewAsList", true);
+            vscode.commands.executeCommand("setContext", "projectManagerFork.viewAsList", true);
         } else {
-            vscode.commands.executeCommand("setContext", "projectManager.viewAsList", false);
+            vscode.commands.executeCommand("setContext", "projectManagerFork.viewAsList", false);
         }
         Container.context.globalState.update("viewAsList", view === ViewFavoritesAs.VIEW_AS_LIST);
         providerManager.refreshTreeViews();
@@ -180,11 +180,11 @@ export async function activate(context: vscode.ExtensionContext) {
     });
 
     context.subscriptions.push(vscode.workspace.onDidChangeConfiguration(async cfg => {
-        if (cfg.affectsConfiguration("projectManager.git") || cfg.affectsConfiguration("projectManager.hg") ||
-            cfg.affectsConfiguration("projectManager.vscode") || cfg.affectsConfiguration("projectManager.svn") || 
-            cfg.affectsConfiguration("projectManager.any") || 
-            cfg.affectsConfiguration("projectManager.ignoreProjectsWithinProjects") || 
-            cfg.affectsConfiguration("projectManager.supportSymlinksOnBaseFolders")) {
+        if (cfg.affectsConfiguration("projectManagerFork.git") || cfg.affectsConfiguration("projectManagerFork.hg") ||
+            cfg.affectsConfiguration("projectManagerFork.vscode") || cfg.affectsConfiguration("projectManagerFork.svn") || 
+            cfg.affectsConfiguration("projectManagerFork.any") || 
+            cfg.affectsConfiguration("projectManagerFork.ignoreProjectsWithinProjects") || 
+            cfg.affectsConfiguration("projectManagerFork.supportSymlinksOnBaseFolders")) {
             refreshProjects();
         }
 
@@ -192,22 +192,22 @@ export async function activate(context: vscode.ExtensionContext) {
             providerManager.refreshTreeViews();
         }
 
-        if (cfg.affectsConfiguration("projectManager.sortList")) {
+        if (cfg.affectsConfiguration("projectManagerFork.sortList")) {
             updateSortByContext();
             providerManager.storageProvider.refresh();
             providerManager.updateTreeViewStorage();
         }
 
-        if (cfg.affectsConfiguration("projectManager.showParentFolderInfoOnDuplicates")) {
+        if (cfg.affectsConfiguration("projectManagerFork.showParentFolderInfoOnDuplicates")) {
             providerManager.refreshTreeViews();
         }
 
-        if (cfg.affectsConfiguration("projectManager.tags.collapseItems")) {
+        if (cfg.affectsConfiguration("projectManagerFork.tags.collapseItems")) {
             await StorageProvider.resetTagExpansionState();
             providerManager.refreshStorageTreeView();
         }
 
-        if (cfg.affectsConfiguration("projectManager.git.showBranchName")) {
+        if (cfg.affectsConfiguration("projectManagerFork.git.showBranchName")) {
             providerManager.storageProvider.refresh();
             providerManager.updateTreeViewStorage();
         }
@@ -280,7 +280,7 @@ export async function activate(context: vscode.ExtensionContext) {
                     projectStorage.push("Project Name", "Root Path");
                     projectStorage.save();
                     providerManager.updateTreeViewStorage();
-                    vscode.commands.executeCommand("projectManager.editProjects");
+                    vscode.commands.executeCommand("projectManagerFork.editProjects");
                 } else {
                     return;
                 }
@@ -477,7 +477,7 @@ export async function activate(context: vscode.ExtensionContext) {
                 }
 
                 if (option.title === l10n.t("Open File")) {
-                    vscode.commands.executeCommand("projectManager.editProjects");
+                    vscode.commands.executeCommand("projectManagerFork.editProjects");
                 } else {
                     return;
                 }
@@ -488,7 +488,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
     function getProjectFilePath() {
         let projectFile: string;
-        const projectsLocation: string = vscode.workspace.getConfiguration("projectManager").get<string>("projectsLocation");
+        const projectsLocation: string = vscode.workspace.getConfiguration("projectManagerFork").get<string>("projectsLocation");
         if (projectsLocation !== "") {
             projectFile = path.join(PathUtils.expandHomePath(projectsLocation), PROJECTS_FILE);
         } else {
